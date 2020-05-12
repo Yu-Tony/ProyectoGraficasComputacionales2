@@ -46,9 +46,13 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
-	float3 ambient = float3(0.1f, 0.1f, 0.1f);
+	float4 ambient = float4(0.9f, 0.9f, 0.9f,1.f);
 
 	float4 text = colorMap.Sample(colorSampler, pix.tex0);
 
-	return text;
+	if (text.a < 0.25) {
+		clip(-1);
+	}
+
+	return ambient*text;
 }

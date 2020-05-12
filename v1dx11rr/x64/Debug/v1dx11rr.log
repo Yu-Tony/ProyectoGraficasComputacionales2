@@ -65,10 +65,10 @@ C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(518
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(520,23): warning C4018: '<': no coinciden signed/unsigned
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(321,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(377,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(405,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(495,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(335,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(391,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(419,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(509,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(131,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(170,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(225,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
@@ -81,7 +81,17 @@ C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(368,20): message : este argumento se utiliza como un tamaño de búfer
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(376,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(376,20): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(265,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(61,13): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(80,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(81,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(82,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(88,1): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(89,1): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(90,1): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(103,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(104,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(105,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(267,1): warning C4305: '+=': truncamiento de 'double' a 'float'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(74,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(98,26): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(104,27): warning C4305: '=': truncamiento de 'double' a 'float'

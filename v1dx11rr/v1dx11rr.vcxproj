@@ -158,6 +158,7 @@
     <ClInclude Include="Camara.h" />
     <ClInclude Include="DXRR.h" />
     <ClInclude Include="GamePadRR.h" />
+    <ClInclude Include="gestorLuz.h" />
     <ClInclude Include="GrupoModelos.h" />
     <ClInclude Include="Modelo.h" />
     <ClInclude Include="SkyDome.h" />

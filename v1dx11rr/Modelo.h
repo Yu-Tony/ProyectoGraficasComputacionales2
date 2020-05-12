@@ -16,6 +16,20 @@
 
 struct vector3 {
 	float x, y, z;
+	
+	vector3(float x, float y, float z) {
+		this->x = x;
+		this->y = y;
+		this->z = z;
+
+	}
+
+	vector3(float u) {
+		this->x = u;
+		this->y = u;
+		this->z = u;
+	}
+	vector3() {}
 };
 
 struct vector2 {
