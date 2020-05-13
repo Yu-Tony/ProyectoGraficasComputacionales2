@@ -42,6 +42,7 @@ public:
 	SkyDome *skydome;
 	BillboardRR *billboard;
 	Camara *camara;
+	GestorDeLuz* gestorDeLuz;
 	//Modelo* tetera;
 	GrupoModelos* bb;
 
@@ -63,6 +64,7 @@ public:
 		IniciaD3D(hWnd);
 		izqder = 0;
 		arriaba = 0;
+		gestorDeLuz = GestorDeLuz::getInstancia();
 		camara = new Camara(D3DXVECTOR3(10,80,10), D3DXVECTOR3(0,80,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		TexturaTerreno* map0, *map1,  *map2;
 		map0 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");    //AZUL
@@ -82,6 +84,7 @@ public:
 	{
 		LiberaD3D();
 		delete bb;
+		gestorDeLuz->release();
 	}
 
 	bool IniciaD3D(HWND hWnd)
@@ -250,6 +253,7 @@ public:
 		d3dContext->ClearDepthStencilView( depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
 		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 5 ;
 		camara->UpdateCam(vel, arriaba, izqder);
+		gestorDeLuz->Update();
 		skydome->Update(camara->vista, camara->proyeccion);
 
 		TurnOffDepth();

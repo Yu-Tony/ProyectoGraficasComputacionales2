@@ -8,7 +8,7 @@
 #include <d3dx10math.h>
 #include <ctime>
 #include <iostream>
-
+#include "gestorLuz.h"
 
 
 
@@ -27,72 +27,12 @@ struct MatrixType
 };
 
 struct ControlDiaNocheBuffer {
-	float mT;
-	float tN;
-	float padding0;
-	float padding1;
+	D3DXVECTOR4 ambiental;
+	D3DXVECTOR4 color;
 
 };
 
-class CambioDiaNoche
-{
-	float mañanaTarde;
-	float tardeNoche;
-	time_t tiempoActual;
-	time_t tiempoPrev;
-	bool vuelta;
 
-public:
-
-	CambioDiaNoche() {
-		mañanaTarde = 0.f;
-		tardeNoche = 0.f;
-		tiempoPrev = time(0);
-		tiempoActual = time(0);
-		vuelta = false;
-
-	}
-
-	void Update(float* mT, float* tN) {
-
-		tiempoActual = time(0);
-
-		if (tiempoPrev + 1 < tiempoActual) {
-			tiempoPrev = tiempoActual;
-			if (vuelta == false) {
-				if (mañanaTarde < 1.f) {
-					mañanaTarde += 0.01f;
-
-				}
-				else {
-					if (tardeNoche < 1.f) {
-						tardeNoche += 0.01f;
-					}
-					else {
-						vuelta = true;
-						mañanaTarde = 0.01f;
-
-					}
-
-				}
-			}
-			else {
-				if (tardeNoche > 0.f) {
-					tardeNoche -= 0.1f;
-				}
-				else {
-					vuelta = false;
-				}
-
-
-			}
-
-		}
-
-		*mT = mañanaTarde;
-		*tN = tardeNoche;
-	}
-};
 
 
 class SkyDome
@@ -126,13 +66,13 @@ private:
 	ID3D11Device** d3dDevice;
 	ID3D11DeviceContext** d3dContext;
 
-	CambioDiaNoche* cambio;
+
 
 public:
 	SkyDome(int slices, int stacks, float radio, ID3D11Device** d3dDevice,
 		ID3D11DeviceContext** d3dContext, WCHAR* diffuseTex0, WCHAR* diffuseTex1, WCHAR* diffuseTex2)
 	{
-		cambio = new CambioDiaNoche();
+	
 		this->slices = slices;
 		this->stacks = stacks;
 		this->radio = radio;
@@ -146,7 +86,7 @@ public:
 	~SkyDome()
 	{
 		UnloadContent();
-		delete cambio;
+		
 		delete matrices;
 		delete control;
 
@@ -407,10 +347,16 @@ public:
 	{
 		matrices->viewMatrix = view;
 		matrices->projMatrix = projection;
-		float mT, tN;
-		cambio->Update(&mT, &tN);
-		control->mT = mT;
-		control->tN = tN;
+		GestorDeLuz* gestor = GestorDeLuz::getInstancia();
+		control->ambiental.x = gestor->getDatos().ambiental.x;
+		control->ambiental.y = gestor->getDatos().ambiental.y;
+		control->ambiental.z = gestor->getDatos().ambiental.z;
+		control->ambiental.w = 1.f;
+
+		control->color.x = gestor->getDatos().color.x;
+		control->color.y = gestor->getDatos().color.y;
+		control->color.z = gestor->getDatos().color.z;
+		control->color.w = 1.f;
 		
 		
 		
@@ -442,6 +388,8 @@ public:
 		matrices->worldMatrix = worldMat;
 
 		(*d3dContext)->UpdateSubresource(matrixBufferCB, 0, 0, matrices, sizeof(MatrixType), 0);
+
+		
 		(*d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control, sizeof(ControlDiaNocheBuffer), 0);
 		
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
@@ -450,6 +398,8 @@ public:
 
 		(*d3dContext)->DrawIndexed(cantIndex, 0, 0);
 	}
+
+
 
 private:
 	void creaIndices()

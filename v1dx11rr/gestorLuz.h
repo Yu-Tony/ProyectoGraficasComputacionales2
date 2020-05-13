@@ -1,6 +1,6 @@
 #ifndef ___GSLUX
 #define ___GSLUX
-
+#include "Modelo.h"
 
 struct FuenteDeLuz {
 	vector3 ubicacion;
@@ -26,7 +26,7 @@ class GestorDeLuz {
 		tardeNoche = 0;
 		tiempoPrev = time(0);
 		tiempoActual = time(0);
-		bool vuelta = false;
+		 vuelta = false;
 		datos.ambiental = vector3(0.5f);
 		
 		
@@ -69,7 +69,7 @@ public:
 	}
 
 	void Update() {
-
+		float velocidad = 1000.f;
 		tiempoActual = time(0);
 
 		if (tiempoPrev + 1 < tiempoActual) {
@@ -77,17 +77,17 @@ public:
 			if (vuelta == false) {
 				if (mañanaTarde < 1.f) {
 					mañanaTarde += 0.01f;
-					datos.ambiental.x += 0.005;
-					datos.ambiental.y += 0.005;
-					datos.ambiental.z += 0.005;
+					datos.ambiental.x += 5/velocidad;
+					datos.ambiental.y += 5/velocidad;
+					datos.ambiental.z += 5/velocidad;
 
 				}
 				else {
 					if (tardeNoche < 1.f) {
 						tardeNoche += 0.01f;
-						datos.ambiental.x -= 0.008;
-						datos.ambiental.y -= 0.008;
-						datos.ambiental.z -= 0.008;
+						datos.ambiental.x -= 8/velocidad;
+						datos.ambiental.y -= 8/velocidad;
+						datos.ambiental.z -= 8/velocidad;
 					}
 					else {
 						vuelta = true;
@@ -100,9 +100,9 @@ public:
 			else {
 				if (tardeNoche > 0.f) {
 					tardeNoche -= 0.01f;
-					datos.ambiental.x += 0.002;
-					datos.ambiental.y += 0.002;
-					datos.ambiental.z += 0.002;
+					datos.ambiental.x += 2/velocidad;
+					datos.ambiental.y += 2/velocidad;
+					datos.ambiental.z += 2/velocidad;
 					
 				}
 				else {

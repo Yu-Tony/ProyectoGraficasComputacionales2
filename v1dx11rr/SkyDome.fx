@@ -15,10 +15,8 @@ cbuffer MatrixBuffer : register (b0)
 };
 cbuffer ControlDiaNoche : register (b1)
 {
-	float mT;
-	float tN;
-	float padding0;
-	float padding1;
+	float4 ambient;
+	float4 rgbColor;
 };
 
 
@@ -48,15 +46,9 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
+	
 	float4 text0= texture0.Sample(colorSampler, pix.tex0);
-	float4 text1= texture1.Sample(colorSampler, pix.tex0);
-	float4 text2= texture2.Sample(colorSampler, pix.tex0);
 
 
-	float4 finalColor = lerp(text0,text1, mT);
-	finalColor = lerp(finalColor, text2, tN);
-
-
-
-	return finalColor;
+	return ambient*text0;
 }
