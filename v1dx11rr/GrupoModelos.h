@@ -142,10 +142,12 @@ private:
 
 					obj->caras[i].u = uvs[uvIndices[i] - 1].u;
 					obj->caras[i].v = 1-uvs[uvIndices[i] - 1].v;
-
+				
 					obj->caras[i].nx = normales[normalIndices[i] - 1].x;
 					obj->caras[i].ny = normales[normalIndices[i] - 1].y;
 					obj->caras[i].nz = normales[normalIndices[i] - 1].z;
+				
+					
 
 					obj->indices[i] = i;
 
@@ -180,7 +182,10 @@ private:
 						obj->caras[i].z = verticesS[vertexIndices[i] - 1].z;
 
 						obj->caras[i].u = uvs[uvIndices[i] - 1].u;
+
 						obj->caras[i].v = 1-uvs[uvIndices[i] - 1].v;
+
+				
 
 						obj->caras[i].nx = normales[normalIndices[i] - 1].x;
 						obj->caras[i].ny = normales[normalIndices[i] - 1].y;
@@ -191,7 +196,7 @@ private:
 
 
 					}
-
+					
 					objs.push_back(*obj);
 					delete obj;
 

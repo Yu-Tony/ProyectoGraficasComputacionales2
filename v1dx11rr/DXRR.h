@@ -259,7 +259,7 @@ public:
 		TurnOffDepth();
 		skydome->Render(camara->posCam);
 		TurnOnDepth();
-		terreno->Draw(camara->vista, camara->proyeccion);
+		//terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();
 		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,terreno->Superficie(billboard->posx, billboard->posz));
 		//TurnOffAlphaBlending();
@@ -268,7 +268,7 @@ public:
 		static float rot = 0;
 		D3DXMATRIX aux;
 		D3DXMatrixTranslation(&aux, 25.f, 0.f, 48.f);
-		D3DXMatrixMultiply(&aux, D3DXMatrixRotationZ(&bb->getMatrizMundo(), rot += 0.01), &aux);
+		D3DXMatrixMultiply(&aux, D3DXMatrixRotationX(&bb->getMatrizMundo(), rot+=0.01), &aux);
 		bb->setMatrizMundo(aux, terreno);
 	bb->Draw(camara->vista, camara->proyeccion);
 				

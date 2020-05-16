@@ -37,7 +37,7 @@ struct vector2 {
 };
 
 struct Cara {
-	float x, y, z, u, v, nx, ny, nz;
+	float x, y, z, u, v, nx, ny, nz,tx, ty, tz, bx, by, bz;
 
 };
 
@@ -102,10 +102,27 @@ public:
 		std::wstring w;
 		std::copy(map.c_str(), map.c_str() + strlen(map.c_str()), back_inserter(w));
 		const WCHAR* text = w.c_str();
-
-
-
-		CargaParametros(text, text);
+		
+		std::string normal = map;
+		int counter = 0;
+		for (char& c : normal) {
+			if (c != '.') {
+				counter++;
+			}
+			else {
+				break;
+			}
+			
+		}
+		normal = normal.substr(0, counter);
+		normal += "Normal.jpg";
+	
+		
+		std::wstring wNormal;
+		std::copy(normal.c_str(), normal.c_str() + strlen(normal.c_str()), back_inserter(wNormal));
+		const WCHAR* textNormal = wNormal.c_str();
+		getBTN();
+		CargaParametros(text, textNormal);
 
 	}
 
@@ -183,6 +200,8 @@ private:
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{ "NORMAL", 1, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{ "NORMAL", 2, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0}
 		};
 
 		unsigned int totalLayoutElements = ARRAYSIZE(solidColorLayout);
@@ -271,6 +290,7 @@ private:
 	
 		//crea los accesos de las texturas para los shaders 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
+		
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
 		
 
@@ -436,99 +456,79 @@ private:
 
 	}
 
-	void cargaModelo() {
+
+	void getBTN() {
+		for (int i = 0; i < obj.cuenta; i += 3) {
+			D3DXVECTOR3 v0(obj.caras[i].x, obj.caras[i].y, obj.caras[i].z);
+			D3DXVECTOR3 v1(obj.caras[i + 1].x, obj.caras[i + 1].y, obj.caras[i + 1].z);
+			D3DXVECTOR3 v2(obj.caras[i + 2].x, obj.caras[i + 2].y, obj.caras[i + 2].z);
+
+			D3DXVECTOR3 deltaPos1 = v1 - v0;
+			D3DXVECTOR3 deltaPos2 = v2 - v0;
+
+			D3DXVECTOR2 uv0(obj.caras[i].u, obj.caras[i].v);
+			D3DXVECTOR2 uv1(obj.caras[i + 1].u, obj.caras[i + 1].v);
+			D3DXVECTOR2 uv2(obj.caras[i + 2].u, obj.caras[i + 2].v);
+
+			D3DXVECTOR2 deltaUV1 = uv1 - uv0;
+			D3DXVECTOR2 deltaUV2 = uv2 - uv0;
 
 
-		std::vector<vector3> verticesS;
-		std::vector<vector2> uvs;
-		std::vector<vector3> normales;
-		std::vector<int> vertexIndices;
-		std::vector<int> uvIndices;
-		std::vector<int> normalIndices;
-
-		errno_t err;
-		FILE* file;
-		err = fopen_s(&file, "tetera.obj", "r");
-		if (file == NULL) {
-			printf("Impossible to open the file !\n");
-			return;
-		}
-
-		while (1)
-		{
-			char lineHeader[128];
-			// Lee la primera palabra de la línea
-			int res = fscanf_s(file, "%s", lineHeader, 128);
-			if (res == EOF)
-				break; // EOF = End Of File, es decir, el final del archivo. Se finaliza el ciclo.
-
-			if (strcmp(lineHeader, "v") == 0) {
-				vector3 vertex;
-				fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
-				verticesS.push_back(vertex);
-			}
-			else if (strcmp(lineHeader, "vt") == 0) {
-				vector2 uv;
-				fscanf_s(file, "%f %f\n", &uv.u, &uv.v);
-				uvs.push_back(uv);
-			}
-			else if (strcmp(lineHeader, "vn") == 0) {
-				vector3 normal;
-				fscanf_s(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
-				normales.push_back(normal);
-			}
-			else if (strcmp(lineHeader, "f") == 0) {
-				std::string vertex1, vertex2, vertex3;
-				unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
-				int matches = fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n",
-					&vertexIndex[0], &uvIndex[0], &normalIndex[0],
-					&vertexIndex[1], &uvIndex[1], &normalIndex[1],
-					&vertexIndex[2], &uvIndex[2], &normalIndex[2]);
-				if (matches != 9) {
-					printf("File can't be read by our simple parser : ( Try exporting with other options\n");
-					return;
-				}
-				vertexIndices.push_back(vertexIndex[0]);
-				vertexIndices.push_back(vertexIndex[1]);
-				vertexIndices.push_back(vertexIndex[2]);
-				uvIndices.push_back(uvIndex[0]);
-				uvIndices.push_back(uvIndex[1]);
-				uvIndices.push_back(uvIndex[2]);
-				normalIndices.push_back(normalIndex[0]);
-				normalIndices.push_back(normalIndex[1]);
-				normalIndices.push_back(normalIndex[2]);
-			}
-		}
-
-	
 
 
-		struct Cara {
-			float x, y, z, u, v, nx, ny, nz;
-		};
-	cuenta = vertexIndices.size();
-		Cara* cara = new Cara[cuenta];
-		int counter = 0;
-		int vI = 0, uvI = 0, nI = 0;
-		for (int i = 0; i < vertexIndices.size(); i++) {
+			/*D3DXVECTOR3 tangente= (deltaPos1 * deltaUV2.x - deltaPos2 * deltaUV1.x) * r;
+			D3DXVECTOR3 binormal = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x) * r; */
 
-			cara[i].x = verticesS[vertexIndices[i] - 1].x;
-			cara[i].y = verticesS[vertexIndices[i] - 1].y;
-			cara[i].z = verticesS[vertexIndices[i] - 1].z;
 
-			cara[i].u = uvs[uvIndices[i] - 1].u;
-			cara[i].v = uvs[uvIndices[i] - 1].v;
 
-			cara[i].nx = normales[normalIndices[i] - 1].x;
-			cara[i].ny = normales[normalIndices[i] - 1].y;
-			cara[i].nz = normales[normalIndices[i] - 1].z;
+			/*		D3DXVECTOR3 binormal; D3DXVec3Cross(&binormal, &normal, &tangente);
+					D3DXVec3Normalize(&tangente, &tangente);
+					D3DXVec3Normalize(&binormal, &binormal);*/
+
+			D3DXVECTOR3 normal(obj.caras[i].nx, obj.caras[i].ny, obj.caras[i].nz);
+			float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+
+			D3DXVECTOR3 tangente;
+
+			tangente.x = r * (deltaUV2.y * deltaPos1.x - deltaUV1.y * deltaPos2.x);
+			tangente.y = r * (deltaUV2.y * deltaPos1.y - deltaUV1.y * deltaPos2.y);
+			tangente.z = r * (deltaUV2.y * deltaPos1.z - deltaUV1.y * deltaPos2.z);
+
+			D3DXVECTOR3 binormal;
+
+			//binormal.x = r * (-deltaUV2.x * deltaPos1.x + deltaUV1.x * deltaPos2.x);
+			//binormal.y = r * (-deltaUV2.x * deltaPos1.y + deltaUV1.x * deltaPos2.y);
+			//binormal.z = r * (-deltaUV2.x * deltaPos1.z + deltaUV1.x * deltaPos2.z);
+
+			D3DXVec3Cross(&binormal, &normal, &tangente);
+
+			obj.caras[i].tx = tangente.x;
+			obj.caras[i].ty = tangente.y;
+			obj.caras[i].tz = tangente.z;
+
+			obj.caras[i].bx = binormal.x;
+			obj.caras[i].by = binormal.y;
+			obj.caras[i].bz = binormal.z;
+
+			obj.caras[i + 1].tx = tangente.x;
+			obj.caras[i + 1].ty = tangente.y;
+			obj.caras[i + 1].tz = tangente.z;
+
+			obj.caras[i + 1].bx = binormal.x;
+			obj.caras[i + 1].by = binormal.y;
+			obj.caras[i + 1].bz = binormal.z;
+
+			obj.caras[i + 2].tx = tangente.x;
+			obj.caras[i + 2].ty = tangente.y;
+			obj.caras[i + 2].tz = tangente.z;
+
+			obj.caras[i + 2].bx = binormal.x;
+			obj.caras[i + 2].by = binormal.y;
+			obj.caras[i + 2].bz = binormal.z;
+
 
 		}
-
-
-		int u = 0;
-	
-	
 	}
+
 };
 #endif

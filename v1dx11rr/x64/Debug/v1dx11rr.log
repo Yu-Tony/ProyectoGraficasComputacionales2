@@ -1,2 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Terreno.vcxproj, TerrenoSky.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(52,27-57): warning X3206: 'mul': implicit truncation of vector type
+C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(52,2-58): warning X3206: implicit truncation of vector type
+C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(55,17-49): warning X3206: 'mul': implicit truncation of vector type
+C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(55,2-49): warning X3206: implicit truncation of vector type
+C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(71,9-34): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\Modelo.cso
   v1dx11rr.vcxproj -> C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\TerrenoSkyBill.exe
