@@ -74,7 +74,7 @@ public:
 		//tetera = new Modelo(d3dDevice, d3dContext, L"Tex_0901_0.jpg", L"sandNormal.jpg");
 		delete map0; delete map1; delete map2;
 		skydome = new SkyDome(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
-		bb = new GrupoModelos(d3dDevice, d3dContext, "bomb.obj", "bomb.mtl");
+		bb = new GrupoModelos(d3dDevice, d3dContext, "box.obj", "box.mtl");
 		
 		billboard = new BillboardRR(L"palm.png", 0, 0, d3dDevice, d3dContext, 5.f, 7.f);
 	

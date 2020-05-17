@@ -1,9 +1,91 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Terreno.vcxproj, TerrenoSky.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(52,27-57): warning X3206: 'mul': implicit truncation of vector type
-C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(52,2-58): warning X3206: implicit truncation of vector type
-C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(55,17-49): warning X3206: 'mul': implicit truncation of vector type
-C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(55,2-49): warning X3206: implicit truncation of vector type
-C:\Users\Axel\Desktop\6 sem\Gr�ficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.fx(71,9-34): warning X3206: implicit truncation of vector type
-  
-  compilation object save succeeded; see C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\Modelo.cso
+  TerrenoSkyBill.cpp
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(12,1): warning C4005: 'DXGI_STATUS_OCCLUDED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55840): message : vea la definición anterior de 'DXGI_STATUS_OCCLUDED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(13,1): warning C4005: 'DXGI_STATUS_CLIPPED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55849): message : vea la definición anterior de 'DXGI_STATUS_CLIPPED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(14,1): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55858): message : vea la definición anterior de 'DXGI_STATUS_NO_REDIRECTION'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(15,1): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55867): message : vea la definición anterior de 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(16,1): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55876): message : vea la definición anterior de 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(17,1): warning C4005: 'DXGI_STATUS_MODE_CHANGED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55885): message : vea la definición anterior de 'DXGI_STATUS_MODE_CHANGED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(18,1): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55894): message : vea la definición anterior de 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(21,1): warning C4005: 'DXGI_ERROR_INVALID_CALL': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55909): message : vea la definición anterior de 'DXGI_ERROR_INVALID_CALL'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(22,1): warning C4005: 'DXGI_ERROR_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55918): message : vea la definición anterior de 'DXGI_ERROR_NOT_FOUND'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(23,1): warning C4005: 'DXGI_ERROR_MORE_DATA': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55927): message : vea la definición anterior de 'DXGI_ERROR_MORE_DATA'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(24,1): warning C4005: 'DXGI_ERROR_UNSUPPORTED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55936): message : vea la definición anterior de 'DXGI_ERROR_UNSUPPORTED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(25,1): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55945): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_REMOVED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(26,1): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55954): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_HUNG'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(27,1): warning C4005: 'DXGI_ERROR_DEVICE_RESET': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55964): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_RESET'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(28,1): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55973): message : vea la definición anterior de 'DXGI_ERROR_WAS_STILL_DRAWING'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(29,1): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55983): message : vea la definición anterior de 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(30,1): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(55992): message : vea la definición anterior de 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(31,1): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56002): message : vea la definición anterior de 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(32,1): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56011): message : vea la definición anterior de 'DXGI_ERROR_NONEXCLUSIVE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(33,1): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56020): message : vea la definición anterior de 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(34,1): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56030): message : vea la definición anterior de 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(35,1): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56039): message : vea la definición anterior de 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(917,1): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56303): message : vea la definición anterior de 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(918,1): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56312): message : vea la definición anterior de 'D3D11_ERROR_FILE_NOT_FOUND'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(919,1): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56322): message : vea la definición anterior de 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(920,1): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56331): message : vea la definición anterior de 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(608,1): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56279): message : vea la definición anterior de 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(609,1): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56288): message : vea la definición anterior de 'D3D10_ERROR_FILE_NOT_FOUND'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(229,85): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(336,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(336,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(419,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(455,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(518,22): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(520,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(355,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(411,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(439,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(61,13): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(131,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(172,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(230,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(230,20): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(315,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(315,20): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(365,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(365,20): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(373,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(373,20): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(381,20): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(381,20): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(271,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(74,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(98,26): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(104,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(109,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(115,28): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(118,58): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   v1dx11rr.vcxproj -> C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\TerrenoSkyBill.exe
