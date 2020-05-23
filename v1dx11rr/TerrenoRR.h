@@ -8,7 +8,7 @@
 #include <DxErr.h>
 #include <D3Dcompiler.h>
 #include <d3dx10math.h>
-
+#include "gestorLuz.h"
 
 struct TexturaTerreno {
 	WCHAR* diffuseMap;
@@ -20,7 +20,7 @@ struct TexturaTerreno {
 	}
 };
 
-class TerrenoRR {
+class TerrenoRR :public ComunicacionLuces {
 private:
 	struct VertexComponent
 	{
@@ -324,6 +324,8 @@ public:
 			return false;
 		}
 
+		
+
 		//posicion de la camara
 		D3DXVECTOR3 eye = D3DXVECTOR3(0.0f, 100.0f, 200.0f);
 		//a donde ve
@@ -337,6 +339,11 @@ public:
 		//las transpone para acelerar la multiplicacion
 		D3DXMatrixTranspose(&viewMatrix, &viewMatrix);
 		D3DXMatrixTranspose(&projMatrix, &projMatrix);
+
+
+		//crear bufer para las luces
+		CreateLucesBuffer(&d3dDevice);
+
 
 		return true;
 	}
@@ -413,8 +420,10 @@ public:
 	{
 	}
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, GestorDeLuz*gestor)
 	{
+	
+
 		static float rotation = 0.0f;
 		rotation += 0.01;
 
@@ -461,10 +470,16 @@ public:
 		d3dContext->UpdateSubresource(worldCB, 0, 0, &worldMat, 0, 0);
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
+
+		UpdateLuces(gestor);
+		(d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
+
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
+		d3dContext->PSSetConstantBuffers(3, 1, &controlBufferCB);
+
 		//cantidad de trabajos
 		int cuenta = (anchoTexTerr - 1) * (altoTexTerr - 1) * 6;
 		d3dContext->DrawIndexed(cuenta, 0, 0);

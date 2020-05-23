@@ -20,6 +20,14 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
+cbuffer ControlDiaNoche : register (b3)
+{
+	float4 ambient;
+	float4 rgbColor;
+	float4 dirLuz;
+};
+
+
 struct VS_Input
 {
 	float4 pos : POSITION;
@@ -50,8 +58,7 @@ PS_Input VS_Main(VS_Input vertex)
 	vsOut.tex0 = vertex.tex0;
 
 	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));
-	//float3 tangentW =mul(vertex.tangente, worldMatrix);
-	//vsOut.tangent= normalize(tangentW - dot(tangentW, vsOut.normal) * vsOut.normal);
+
 	vsOut.tangent= mul(vertex.tangente, worldMatrix);
 
 	vsOut.binorm = normalize(cross(vsOut.tangent, vsOut.normal));
@@ -61,25 +68,27 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 { 
+		float4 text0 = colorMap.Sample(colorSampler, pix.tex0);
+		float4 normal0 = normalMap.Sample(colorSampler, pix.tex0);
 	
-	float3 DiffuseDirection = float3(10.0f, 10.0f, 0.f);
-	float4 DiffuseColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
-	float4 fColor;
-	float4 ambient = float4(0.6f, 0.6f, 0.6f,1.f);
-	float4 text0 = colorMap.Sample(colorSampler, pix.tex0);
-	float4 normal0 = normalMap.Sample(colorSampler, pix.tex0);
-	float3 bump = 2.0 * normal0 - 1.0;
-	bump = normalize(bump);
+		float4 aportacionAmbiental = ambient * rgbColor*0.6f;
 
-	float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
+		float4 DiffuseColor = float4(1.0f, 1.0f, 1.f, 1.0f);
 	
-	float3 newnormal = mul(TBN, normalize(DiffuseDirection));
-	float4 FALL = dot(bump, normalize(newnormal));
-	//float4 FALL = float4(pix.normal, 1.f)*float4(normalize(DiffuseDirection),1.f);
-	float4 aportacionDifusa = saturate(DiffuseColor * FALL);
+	
+		float3 bump = 2.0 * normal0 - 1.0;
+		bump = normalize(bump);
+
+		float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
+	
+		float3 newnormal = mul(TBN, normalize(dirLuz));
+		float4 FALL = dot(bump, normalize(newnormal));
+	
+		float4 aportacionDifusa = saturate(DiffuseColor * FALL*0.6f);
+
+	
 	
 
-	fColor = text0 * (ambient + aportacionDifusa);
 
-	return fColor;
+	return text0 * (aportacionAmbiental + aportacionDifusa);
 }

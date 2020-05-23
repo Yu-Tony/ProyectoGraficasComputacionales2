@@ -18,6 +18,13 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
+cbuffer ControlDiaNoche : register (b3)
+{
+	float4 ambient;
+	float4 rgbColor;
+	float4 dirLuz;
+};
+
 struct VS_Input
 {
 	float4 pos : POSITION;
@@ -46,7 +53,7 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
-	float4 ambient = float4(0.9f, 0.9f, 0.9f,1.f);
+
 
 	float4 text = colorMap.Sample(colorSampler, pix.tex0);
 
@@ -54,5 +61,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 		clip(-1);
 	}
 
-	return ambient*text;
+	float4 aportacionAmbiental = ambient * rgbColor*0.6f;
+
+	return text*(aportacionAmbiental);
 }

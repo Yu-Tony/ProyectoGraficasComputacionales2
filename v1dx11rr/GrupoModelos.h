@@ -59,9 +59,9 @@ public:
 	D3DXMATRIX getMatrizMundo() {
 		return this->matrizMundo;
 	}
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion) {
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, GestorDeLuz* gestor) {
 		for (Modelo &m : modelos) {
-			m.Draw(vista, proyeccion, matrizMundo);
+			m.Draw(vista, proyeccion, matrizMundo, gestor);
 	}
 	
 	}

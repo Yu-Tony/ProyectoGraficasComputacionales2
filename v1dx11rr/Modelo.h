@@ -10,27 +10,12 @@
 #include <d3dx10math.h>
 
 
-#include <conio.h>
-#include <vector>
-#include <iostream>
 
-struct vector3 {
-	float x, y, z;
-	
-	vector3(float x, float y, float z) {
-		this->x = x;
-		this->y = y;
-		this->z = z;
+#include "gestorLuz.h"
 
-	}
 
-	vector3(float u) {
-		this->x = u;
-		this->y = u;
-		this->z = u;
-	}
-	vector3() {}
-};
+
+
 
 struct vector2 {
 	float u, v;
@@ -58,7 +43,7 @@ struct Obj {
 
 };
 
-class Modelo{
+class Modelo:public ComunicacionLuces{
 
 	int cuenta;
 
@@ -357,6 +342,9 @@ private:
 		D3DXMatrixTranspose(&viewMatrix, &viewMatrix);
 		D3DXMatrixTranspose(&projMatrix, &projMatrix);
 
+
+		CreateLucesBuffer(&d3dDevice);
+
 		return true;
 	}
 	public:
@@ -405,7 +393,7 @@ private:
 	}
 
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXMATRIX matrizMundo)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXMATRIX matrizMundo, GestorDeLuz* gestor)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -445,10 +433,17 @@ private:
 		d3dContext->UpdateSubresource(worldCB, 0, 0, &worldMat, 0, 0);
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
+
+
+		UpdateLuces(gestor);
+
+		d3dContext->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
+		d3dContext->VSSetConstantBuffers(3, 1, &controlBufferCB);
+
 		//cantidad de trabajos
 	
 		d3dContext->DrawIndexed(cuenta, 0, 0);

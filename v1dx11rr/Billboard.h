@@ -7,7 +7,7 @@
 #include <D3Dcompiler.h>
 #include <d3dx10math.h>
 
-class BillboardRR {
+class BillboardRR : public ComunicacionLuces{
 public:
 	struct VertexComponent
 	{
@@ -269,7 +269,7 @@ public:
 			return false;
 		}
 
-
+		CreateLucesBuffer(&d3dDevice);
 		return true;
 	}
 
@@ -308,7 +308,7 @@ public:
 	}
 
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posy)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posy, GestorDeLuz* gestor)
 	{
 
 
@@ -355,10 +355,15 @@ public:
 		d3dContext->UpdateSubresource(worldCB, 0, 0, &worldMat, 0, 0);
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
+
+		UpdateLuces(gestor);
+
+		d3dContext->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
+		d3dContext->PSSetConstantBuffers(3, 1, &controlBufferCB);
 		//cantidad de trabajos
 
 		d3dContext->DrawIndexed(6, 0, 0);

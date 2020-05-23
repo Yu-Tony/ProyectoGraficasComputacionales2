@@ -43,7 +43,7 @@ public:
 	BillboardRR *billboard;
 	Camara *camara;
 	GestorDeLuz* gestorDeLuz;
-	//Modelo* tetera;
+	
 	GrupoModelos* bb;
 
 
@@ -254,23 +254,23 @@ public:
 		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 5 ;
 		camara->UpdateCam(vel, arriaba, izqder);
 		gestorDeLuz->Update();
-		skydome->Update(camara->vista, camara->proyeccion);
+		skydome->Update(camara->vista, camara->proyeccion, gestorDeLuz);
 
 		TurnOffDepth();
 		skydome->Render(camara->posCam);
 		TurnOnDepth();
-		//terreno->Draw(camara->vista, camara->proyeccion);
-		//TurnOnAlphaBlending();
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,terreno->Superficie(billboard->posx, billboard->posz));
-		//TurnOffAlphaBlending();
+		terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,terreno->Superficie(billboard->posx, billboard->posz), gestorDeLuz);
+	
 		
 
 		static float rot = 0;
 		D3DXMATRIX aux;
-		D3DXMatrixTranslation(&aux, 25.f, 0.f, 48.f);
-		D3DXMatrixMultiply(&aux, D3DXMatrixRotationX(&bb->getMatrizMundo(), rot+=0.01), &aux);
+		D3DXMatrixTranslation(&aux, 25.f, 8.f, 48.f);
+		//D3DXMatrixMultiply(&aux, D3DXMatrixRotationX(&bb->getMatrizMundo(), rot+=0.01), &aux);
 		bb->setMatrizMundo(aux, terreno);
-	bb->Draw(camara->vista, camara->proyeccion);
+	bb->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 				
 		swapChain->Present( 1, 0 );
 	}

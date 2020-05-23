@@ -24,6 +24,13 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
+cbuffer ControlDiaNoche : register (b3)
+{
+	float4 ambient;
+	float4 rgbColor;
+	float4 dirLuz;
+};
+
 struct VS_Input
 {
 	float4 pos : POSITION;
@@ -64,7 +71,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 	float4 fColor = float4(1,0,0,1);
 
-	float3 ambient = float3(0.1f, 0.1f, 0.1f);
+	float4 aportacionAmbiental = ambient*rgbColor*0.6f;
 
 
 	float4 text0 = colorMap0.Sample(colorSampler, pix.tex0);
@@ -103,14 +110,10 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
 	float3 newnormal = mul(TBN, bump);
 
-	float3 DiffuseDirection = float3(0.0f, -1.0f, 0.3f);
-	float4 DiffuseColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	float4 aportacionDifusa = saturate(dot(dirLuz, newnormal))*0.2f;
 
-	float3 diffuse = dot(-DiffuseDirection, newnormal);
-	diffuse = saturate(diffuse * DiffuseColor.rgb);
-	diffuse = saturate(diffuse + ambient);
 
-	fColor = float4(textf.rgb * diffuse, 1.0f);
+	fColor = float4(textf.rgb, 1.0f)* (aportacionAmbiental+aportacionDifusa);
 
 	return fColor;
 }

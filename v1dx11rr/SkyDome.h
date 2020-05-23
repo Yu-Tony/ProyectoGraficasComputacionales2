@@ -6,7 +6,7 @@
 #include <DxErr.h>
 #include <D3Dcompiler.h>
 #include <d3dx10math.h>
-#include <ctime>
+
 #include <iostream>
 #include "gestorLuz.h"
 
@@ -26,16 +26,11 @@ struct MatrixType
 	D3DXVECTOR4 valores;
 };
 
-struct ControlDiaNocheBuffer {
-	D3DXVECTOR4 ambiental;
-	D3DXVECTOR4 color;
-
-};
 
 
 
 
-class SkyDome
+class SkyDome :public ComunicacionLuces
 {
 public:
 	float gamepad;
@@ -54,10 +49,10 @@ private:
 	ID3D11SamplerState* texSampler;
 
 	ID3D11Buffer* matrixBufferCB;
-	ID3D11Buffer* controlBufferCB;
+	
 
 	MatrixType* matrices;
-	ControlDiaNocheBuffer* control;
+
 
 	SkyComponent* vertices;
 	int slices, stacks, cantIndex;
@@ -88,7 +83,7 @@ public:
 		UnloadContent();
 		
 		delete matrices;
-		delete control;
+		
 
 	}
 
@@ -284,19 +279,7 @@ public:
 		}
 		matrices = new MatrixType;
 
-		D3D11_BUFFER_DESC constDesc1;
-		ZeroMemory(&constDesc1, sizeof(constDesc1));
-		constDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		constDesc.ByteWidth = sizeof(ControlDiaNocheBuffer);
-		constDesc.Usage = D3D11_USAGE_DEFAULT;
-
-		d3dResult = (*d3dDevice)->CreateBuffer(&constDesc, 0, &controlBufferCB);
-
-		if (FAILED(d3dResult))
-		{
-			return false;
-		}
-		control = new ControlDiaNocheBuffer;
+		CreateLucesBuffer(d3dDevice);
 
 	
 
@@ -343,20 +326,12 @@ public:
 		return true;
 	}
 
-	void Update(D3DXMATRIX view, D3DXMATRIX projection)
+	void Update(D3DXMATRIX view, D3DXMATRIX projection, GestorDeLuz* gestor)
 	{
 		matrices->viewMatrix = view;
 		matrices->projMatrix = projection;
-		GestorDeLuz* gestor = GestorDeLuz::getInstancia();
-		control->ambiental.x = gestor->getDatos().ambiental.x;
-		control->ambiental.y = gestor->getDatos().ambiental.y;
-		control->ambiental.z = gestor->getDatos().ambiental.z;
-		control->ambiental.w = 1.f;
-
-		control->color.x = gestor->getDatos().color.x;
-		control->color.y = gestor->getDatos().color.y;
-		control->color.z = gestor->getDatos().color.z;
-		control->color.w = 1.f;
+	
+		UpdateLuces(gestor);
 		
 		
 		
@@ -389,10 +364,12 @@ public:
 
 		(*d3dContext)->UpdateSubresource(matrixBufferCB, 0, 0, matrices, sizeof(MatrixType), 0);
 
-		
-		(*d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control, sizeof(ControlDiaNocheBuffer), 0);
-		
+
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
+
+
+		(*d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control.get(), sizeof(ControlDiaNocheBuffer), 0);
+		
 		(*d3dContext)->PSSetConstantBuffers(1, 1, &controlBufferCB);
 
 

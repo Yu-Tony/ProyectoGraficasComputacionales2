@@ -50,5 +50,8 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float4 text0= texture0.Sample(colorSampler, pix.tex0);
 
 
-	return ambient*text0;
+
+	float4 aportacionAmbiental = ambient * rgbColor;
+
+	return aportacionAmbiental*text0;
 }
