@@ -29,6 +29,7 @@ cbuffer ControlDiaNoche : register (b3)
 	float4 ambient;
 	float4 rgbColor;
 	float4 dirLuz;
+	
 };
 
 struct VS_Input
@@ -46,6 +47,7 @@ struct PS_Input
 	float4 pos : SV_POSITION;
 	float2 tex0 : TEXCOORD0;
 	float2 blendTex : TEXCOORD1;
+	float4 position: TEXCOORD2;
 	float3 normal : NORMAL0;
 	float3 tangent : NORMAL1;
 	float3 binorm : NORMAL2;
@@ -55,6 +57,7 @@ PS_Input VS_Main(VS_Input vertex)
 {
 	PS_Input vsOut = (PS_Input)0;
 	vsOut.pos = mul(vertex.pos, worldMatrix);
+	vsOut.position = vsOut.pos;
 	vsOut.pos = mul(vsOut.pos, viewMatrix);
 	vsOut.pos = mul(vsOut.pos, projMatrix);
 
@@ -71,7 +74,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 	float4 fColor = float4(1,0,0,1);
 
-	float4 aportacionAmbiental = ambient*rgbColor*0.6f;
+	float4 aportacionAmbiental = ambient * rgbColor * 0.6f;
 
 
 	float4 text0 = colorMap0.Sample(colorSampler, pix.tex0);
@@ -85,6 +88,11 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 
 	float4 Blend = blendMap1.Sample(colorSampler, pix.blendTex);
+
+	float coeficienteDifuso = 0.5f;
+	float3 luzDifusa;
+	
+
 
 	float4 textf;
 
@@ -108,10 +116,14 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 
 	float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
-	float3 newnormal = mul(TBN, bump);
+	float3 newnormal = mul(TBN, normalize(bump));
 
-	float4 aportacionDifusa = saturate(dot(dirLuz, newnormal))*0.2f;
+	float3 vectorLuz = dirLuz.xyz - pix.position.xyz;
 
+	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *coeficienteDifuso;
+
+	
+	
 
 	fColor = float4(textf.rgb, 1.0f)* (aportacionAmbiental+aportacionDifusa);
 

@@ -8,7 +8,7 @@
 #include "Camara.h"
 #include "SkyDome.h"
 #include "Billboard.h"
-
+#include <string>
 #include "Modelo.h"
 #include "GrupoModelos.h"
 
@@ -74,7 +74,7 @@ public:
 		//tetera = new Modelo(d3dDevice, d3dContext, L"Tex_0901_0.jpg", L"sandNormal.jpg");
 		delete map0; delete map1; delete map2;
 		skydome = new SkyDome(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
-		bb = new GrupoModelos(d3dDevice, d3dContext, "box.obj", "box.mtl");
+		bb = new GrupoModelos(d3dDevice, d3dContext, "bomb.obj", "bomb.mtl");
 		
 		billboard = new BillboardRR(L"palm.png", 0, 0, d3dDevice, d3dContext, 5.f, 7.f);
 	
@@ -253,7 +253,8 @@ public:
 		d3dContext->ClearDepthStencilView( depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
 		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 5 ;
 		camara->UpdateCam(vel, arriaba, izqder);
-		gestorDeLuz->Update();
+		
+		gestorDeLuz->Update(camara->getPosCam());
 		skydome->Update(camara->vista, camara->proyeccion, gestorDeLuz);
 
 		TurnOffDepth();
@@ -267,10 +268,10 @@ public:
 
 		static float rot = 0;
 		D3DXMATRIX aux;
-		D3DXMatrixTranslation(&aux, 25.f, 8.f, 48.f);
-		//D3DXMatrixMultiply(&aux, D3DXMatrixRotationX(&bb->getMatrizMundo(), rot+=0.01), &aux);
+		D3DXMatrixTranslation(&aux, 0.f, 20.f, 0.f);
+		D3DXMatrixMultiply(&aux, D3DXMatrixRotationY(&bb->getMatrizMundo(), rot+=0.01), &aux);
 		bb->setMatrizMundo(aux, terreno);
-	bb->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+	//bb->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 				
 		swapChain->Present( 1, 0 );
 	}
@@ -376,6 +377,14 @@ public:
 
 		d3dDevice->CreateDepthStencilState(&descDDSD, &depthStencilDisabledState);
 		d3dContext->OMSetDepthStencilState(depthStencilDisabledState, 1);
+	}
+
+	std::string getPosCam() {
+		std::string sPosicion;
+		D3DXVECTOR3 vPosicion = camara->getPosCam();
+		sPosicion = "X: " + std::to_string(vPosicion.x) + " Y: " + std::to_string(vPosicion.y) + " Z: " + std::to_string(vPosicion.z);
+
+		return sPosicion;
 	}
 };
 #endif

@@ -61,7 +61,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 		clip(-1);
 	}
 
-	float4 aportacionAmbiental = ambient * rgbColor*0.6f;
+	float4 aportacionAmbiental = ambient * rgbColor;
 
 	return text*(aportacionAmbiental);
 }

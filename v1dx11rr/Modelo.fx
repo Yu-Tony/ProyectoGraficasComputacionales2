@@ -25,6 +25,8 @@ cbuffer ControlDiaNoche : register (b3)
 	float4 ambient;
 	float4 rgbColor;
 	float4 dirLuz;
+	float4 posView;
+
 };
 
 
@@ -46,12 +48,15 @@ struct PS_Input
 	float3 normal : TEXCOORD1;
 	float3 tangent : TEXCOORD2;
 	float3 binorm : TEXCOORD3;
+	float3 position: TEXCOORD4;
+	float3 dirView: TEXCOORD5;
 };
 
 PS_Input VS_Main(VS_Input vertex)
 {
 	PS_Input vsOut = (PS_Input)0;
 	vsOut.pos = mul(vertex.pos, worldMatrix);
+	vsOut.position = vsOut.pos;
 	vsOut.pos = mul(vsOut.pos, viewMatrix);
 	vsOut.pos = mul(vsOut.pos, projMatrix);
 
@@ -81,14 +86,26 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 		float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
 	
-		float3 newnormal = mul(TBN, normalize(dirLuz));
+		float3 vectorLuz = dirLuz - pix.position.xyz;
+
+		float3 newnormal = mul(TBN, normalize(vectorLuz));  //<------------------
+
+
+
 		float4 FALL = dot(bump, normalize(newnormal));
 	
-		float4 aportacionDifusa = saturate(DiffuseColor * FALL*0.6f);
+		float4 aportacionDifusa = saturate(DiffuseColor * FALL*0.4f);
 
-	
-	
+		
+		float ViewDir = normalize(posView - pix.position.xyz);
+		
+		float3 bumpTBN = normalize(mul(bump, TBN));
+		float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
+		float specular = pow(saturate(dot(Reflect, ViewDir)), 4);
 
+		float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
 
-	return text0 * (aportacionAmbiental + aportacionDifusa);
+		float4 aporteEspecular = luzEspecular * specular;
+
+	return text0 * (aportacionAmbiental + aportacionDifusa+ aporteEspecular*0.1f);
 }

@@ -89,6 +89,11 @@ public:
 		D3DXMatrixTranspose( &vista, &vista );
 		return vista;
 	}
+
+	D3DXVECTOR3 getPosCam() {
+		return posCam;
+	}
+
 	~Camara()
 	{
 	}

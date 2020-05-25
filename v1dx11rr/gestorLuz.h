@@ -27,23 +27,24 @@ struct ControlDiaNocheBuffer {
 	D3DXVECTOR4 ambiental;
 	D3DXVECTOR4 color;
 	D3DXVECTOR4 dirLuz;
+	D3DXVECTOR4 posCam;
 
 };
 
 
 struct FuenteDeLuz {
 	vector3 ubicacion;
-	float dirLuz;
+	vector3 dirLuz;
 	float ambiental;
 	vector3 color;
-
+	
 	
 };
 
 class GestorDeLuz {
 	static GestorDeLuz* instancia;
 	FuenteDeLuz datos;
-	
+	D3DXVECTOR3 posCam;
 	float mañanaTarde;
 	float tardeNoche;
 	time_t tiempoActual;
@@ -58,7 +59,7 @@ class GestorDeLuz {
 		 vuelta = false;
 		datos.ambiental = 0.5f;
 		datos.color = vector3(191.25f, 191.25f, 255.f);
-		datos.dirLuz = 0;
+		datos.dirLuz = vector3(-238.f, 5.18f, 243.88f);
 	}
 
 	
@@ -84,16 +85,20 @@ public:
 		instancia == nullptr;
 	}
 
-
+	D3DXVECTOR3 getPosCam() {
+		return posCam;
+	}
 
 
 	FuenteDeLuz getDatos() {
 		return datos;
 	}
 
-	void Update() {
+	void Update(D3DXVECTOR3 posCam) {
 		float velocidad = 1000.f;
 		tiempoActual = time(0);
+
+		this->posCam = posCam;
 
 		if (tiempoPrev  < tiempoActual) {
 			tiempoPrev = tiempoActual;
@@ -105,8 +110,14 @@ public:
 					datos.color.x += 0.6375f;
 					if(datos.color.y<255.f)
 					datos.color.y += 0.6375f;
-				
-					datos.dirLuz += 0.9f;
+
+					if(datos.dirLuz.x<0.f)
+						datos.dirLuz.x += 2.38f;
+					if(datos.dirLuz.y<90.f)
+						datos.dirLuz.y += 0.9f;
+					if(datos.dirLuz.z>0.f)
+						datos.dirLuz.z -= 2.4388f;
+					
 					
 					
 
@@ -121,7 +132,13 @@ public:
 						datos.color.y -= 1.275f;
 						if (datos.color.z > 127.5f)
 						datos.color.z -= 1.275f;
-						datos.dirLuz += 0.9f;
+						
+						if (datos.dirLuz.x < 237.27f)
+							datos.dirLuz.x += 2.3727f;
+						if (datos.dirLuz.y > 5.11f)
+							datos.dirLuz.y -= 0.85f;
+						if (datos.dirLuz.z > -240.22f)
+							datos.dirLuz.z -= 2.4022f;
 						
 				
 					}
@@ -143,7 +160,7 @@ public:
 					datos.color.y += 0.6375;
 					if (datos.color.z < 255.f)
 					datos.color.z += 1.275;
-					datos.dirLuz += 1.8f;
+					
 					
 				}
 				else {
@@ -207,15 +224,19 @@ protected:
 		control->color.y = gestor->getDatos().color.y / 255.f;
 		control->color.z = gestor->getDatos().color.z / 255.f;
 
-		
+
 
 		control->color.w = 1.f;
 
-		control->dirLuz.x = -sin(D3DXToRadian(gestor->getDatos().dirLuz));
-		control->dirLuz.y = 0.f;
-		control->dirLuz.z = cos(D3DXToRadian(gestor->getDatos().dirLuz));
+		control->dirLuz.x = gestor->getDatos().dirLuz.x;
+		control->dirLuz.y = gestor->getDatos().dirLuz.y;
+		control->dirLuz.z = gestor->getDatos().dirLuz.z;
 		control->dirLuz.w = 0.f;
 
+		control->posCam.x = gestor->getPosCam().x;
+		control->posCam.y = gestor->getPosCam().y;
+		control->posCam.z = gestor->getPosCam().z;
+		control->posCam.w = 0.f;
 		
 	}
 
