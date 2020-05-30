@@ -77,7 +77,7 @@ private:
 	ID3D11DeviceContext* d3dContext;
 
 public:
-	TerrenoRR(int ancho, int alto, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, TexturaTerreno* map0, TexturaTerreno* map1, TexturaTerreno* map2, WCHAR* mapaAlturas, WCHAR* mapaBlending)
+	TerrenoRR(int ancho, int alto, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, TexturaTerreno* map0, TexturaTerreno* map1, TexturaTerreno* map2, const wchar_t* mapaAlturas, const wchar_t* mapaBlending)
 	{
 		//copiamos el device y el device context a la clase terreno
 		d3dContext = D3DContext;
@@ -124,7 +124,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(TexturaTerreno* map0,TexturaTerreno* map1, TexturaTerreno* map2, WCHAR* heightTex, WCHAR* mapaBlending, float tile)
+	bool CargaParametros(TexturaTerreno* map0,TexturaTerreno* map1, TexturaTerreno* map2, const wchar_t* heightTex, const wchar_t* mapaBlending, float tile)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -342,13 +342,13 @@ public:
 
 
 		//crear bufer para las luces
-		CreateLucesBuffer(&d3dDevice);
-
+		CreateLuzAmbientalBuffer(&d3dDevice);
+		CreateLuzDifusaBuffer(&d3dDevice);
 
 		return true;
 	}
 
-	bool UnloadContent()
+	void UnloadContent()
 	{
 		if (colorMapSampler)
 			colorMapSampler->Release();
@@ -471,14 +471,23 @@ public:
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
 
-		UpdateLuces(gestor);
-		(d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
+	
 
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
-		d3dContext->PSSetConstantBuffers(3, 1, &controlBufferCB);
+
+		UpdateLuzAmbiental(gestor);
+		UpdateLuzDifusa(gestor);
+		(d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+
+		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
+
+
+		(d3dContext)->UpdateSubresource(luzDifusaCB, 0, 0, luzDifusa.get(), 0, 0);
+
+		d3dContext->PSSetConstantBuffers(4, 1, &luzDifusaCB);
 
 		//cantidad de trabajos
 		int cuenta = (anchoTexTerr - 1) * (altoTexTerr - 1) * 6;
@@ -491,7 +500,7 @@ private:
 	////////////////////////////////////////////////////////////////////////////////////
 	// carga el mapa de alturas para generar los relieves y depresiones en el terreno //
 	////////////////////////////////////////////////////////////////////////////////////
-	void LoadHeightData(WCHAR* heightTex)
+	void LoadHeightData(const wchar_t* heightTex)
 	{
 		HRESULT resultado;
 

@@ -86,6 +86,7 @@ public:
 		this->obj = obj;
 		std::wstring w;
 		std::copy(map.c_str(), map.c_str() + strlen(map.c_str()), back_inserter(w));
+	
 		const WCHAR* text = w.c_str();
 		
 		std::string normal = map;
@@ -101,7 +102,8 @@ public:
 		}
 		normal = normal.substr(0, counter);
 		normal += "Normal.jpg";
-	
+		//normal = "sandNormal.jpg";
+		
 		
 		std::wstring wNormal;
 		std::copy(normal.c_str(), normal.c_str() + strlen(normal.c_str()), back_inserter(wNormal));
@@ -343,7 +345,8 @@ private:
 		D3DXMatrixTranspose(&projMatrix, &projMatrix);
 
 
-		CreateLucesBuffer(&d3dDevice);
+		CreateLuzAmbientalBuffer(&d3dDevice);
+		CreateLuzDifusaBuffer(&d3dDevice);
 
 		return true;
 	}
@@ -435,14 +438,20 @@ private:
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
 
 
-		UpdateLuces(gestor);
-
-		d3dContext->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
+	
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
-		d3dContext->VSSetConstantBuffers(3, 1, &controlBufferCB);
+
+		UpdateLuzAmbiental(gestor);
+		UpdateLuzDifusa(gestor);
+
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+		d3dContext->UpdateSubresource(luzDifusaCB, 0, 0, luzDifusa.get(), 0, 0);
+
+		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
+		d3dContext->PSSetConstantBuffers(4, 1, &luzDifusaCB);
 
 		//cantidad de trabajos
 	

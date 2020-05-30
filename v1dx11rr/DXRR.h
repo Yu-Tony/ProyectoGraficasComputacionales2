@@ -1,5 +1,11 @@
 #ifndef _dxrr
 #define _dxrr
+
+#define ESFINGESXZ 0.1f
+#define ESFINGESY 0.1f
+#define ESFINGEROTX	270.f
+#define ESFINGETRY -53.f
+
 #include <d3d11.h>
 #include <d3dx11.h>
 #include <d3dx10.h>
@@ -13,6 +19,10 @@
 #include "GrupoModelos.h"
 
 #include "gestorLuz.h"
+
+
+
+
 class DXRR{	
 
 private:
@@ -38,19 +48,24 @@ public:
 
 	ID3D11BlendState *alphaBlendState, *commonBlendState;
 
-	TerrenoRR *terreno;
-	SkyDome *skydome;
-	BillboardRR *billboard;
-	Camara *camara;
+	
+	std::unique_ptr<TerrenoRR> terreno;
+	std::unique_ptr<SkyDome> skydome;
+	std::unique_ptr<BillboardRR> billboard;
+	std::unique_ptr<Camara> camara;
+	
 	GestorDeLuz* gestorDeLuz;
 	
-	GrupoModelos* bb;
-
+	
+	std::unique_ptr<AxelGuapo::GrupoModelos> esfinge;
 
 	float izqder;
 	float arriaba;
 	float vel;
 	
+
+
+
     DXRR(HWND hWnd, int Ancho, int Alto)
 	{
 		ancho = Ancho;
@@ -65,25 +80,33 @@ public:
 		izqder = 0;
 		arriaba = 0;
 		gestorDeLuz = GestorDeLuz::getInstancia();
-		camara = new Camara(D3DXVECTOR3(10,80,10), D3DXVECTOR3(0,80,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
+		camara = std::make_unique<Camara>(D3DXVECTOR3(132.f,80.f,-164.121f), D3DXVECTOR3(0,80,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		TexturaTerreno* map0, *map1,  *map2;
 		map0 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");    //AZUL
 		map1 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");  //ROJO
 		map2 = new TexturaTerreno(L"sand1.jpg", L"sandNormal.jpg");   //VERDE
-		terreno = new TerrenoRR(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap2.jpg", L"blend1.jpg");
+		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap2.jpg", L"blend1.jpg");
 		//tetera = new Modelo(d3dDevice, d3dContext, L"Tex_0901_0.jpg", L"sandNormal.jpg");
 		delete map0; delete map1; delete map2;
-		skydome = new SkyDome(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
-		bb = new GrupoModelos(d3dDevice, d3dContext, "bomb.obj", "bomb.mtl");
+		skydome = std::make_unique<SkyDome>(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
 		
-		billboard = new BillboardRR(L"palm.png", 0, 0, d3dDevice, d3dContext, 5.f, 7.f);
+		
+		esfinge= std::make_unique <AxelGuapo::GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/esfinge.obj", "modelos/esfinge/esfinge.mtl");
+		
+		
+		billboard = std::make_unique<BillboardRR>(L"mP.png", 0, 0, d3dDevice, d3dContext, 1196/4.f, 100.f);
 	
+	
+
+
 	}
 
 	~DXRR()
 	{
 		LiberaD3D();
-		delete bb;
+		
+		
+	
 		gestorDeLuz->release();
 	}
 
@@ -262,17 +285,39 @@ public:
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 		
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,terreno->Superficie(billboard->posx, billboard->posz), gestorDeLuz);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,-242.63f, -20.f, -32.69f, gestorDeLuz);
 	
 		
 
-		static float rot = 0;
-		D3DXMATRIX aux;
-		D3DXMatrixTranslation(&aux, 0.f, 20.f, 0.f);
-		D3DXMatrixMultiply(&aux, D3DXMatrixRotationY(&bb->getMatrizMundo(), rot+=0.01), &aux);
-		bb->setMatrizMundo(aux, terreno);
-	//bb->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-				
+		
+		D3DXMATRIX* aux, * aux1; // aux1 = new D3DXMATRIX();
+		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		aux1= D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(180.f));
+		D3DXMatrixMultiply(aux, aux, aux1);		
+		D3DXMatrixScaling(aux1, ESFINGESXZ, ESFINGESY, ESFINGESXZ);
+		D3DXMatrixMultiply(aux, aux1, aux);
+		D3DXMatrixTranslation(aux1,134.25f, terreno->Superficie(134.25f,-133.28f)-10.f, -133.28f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+	
+		
+		esfinge->setMatrizMundo(*aux, terreno.get());
+		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+	
+		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		aux1 = D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(180.f));
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixScaling(aux1, ESFINGESXZ, ESFINGESY, ESFINGESXZ);
+		D3DXMatrixMultiply(aux, aux1, aux);
+		D3DXMatrixTranslation(aux1, 146.91, terreno->Superficie(146.91f, -133.28f) -7.3f, -133.28f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+
+		esfinge->setMatrizMundo(*aux, terreno.get());
+		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		
+
+		
+
 		swapChain->Present( 1, 0 );
 	}
 

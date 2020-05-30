@@ -13,10 +13,11 @@ cbuffer MatrixBuffer : register (b0)
 	matrix projMatrix;
 	float4 valores;
 };
-cbuffer ControlDiaNoche : register (b1)
+cbuffer luzAmbiental : register (b1)
 {
 	float4 ambient;
-	float4 rgbColor;
+	float3 rgbColor;
+	float atenuador;
 };
 
 
@@ -51,7 +52,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 
 
-	float4 aportacionAmbiental = ambient * rgbColor;
+	float4 aportacionAmbiental = ambient * float4(rgbColor,1.f);
 
 	return aportacionAmbiental*text0;
 }

@@ -114,18 +114,41 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 					{
 						dxrr->arriaba = -0.01;
 
-					/*	std::string s = dxrr->getPosCam();
-						std::wstring stemp = std::wstring(s.begin(), s.end());
-						LPCWSTR sw = stemp.c_str();
-
 						
-						MessageBox(0, sw, 0, 0);*/
 					}
 
-					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/25.0;
+					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/25.f;
 					
 				}
+
+		
+
+			
+
+
+			
+			
+			
+	
 			} break;
+
+
+		case WM_KEYDOWN: {
+
+		case 'A': {
+
+			std::string s = dxrr->getPosCam();
+			std::wstring stemp = std::wstring(s.begin(), s.end());
+			LPCWSTR sw = stemp.c_str();
+
+
+			MessageBox(0, sw, 0, 0);
+
+			wParam = 0;
+			break;
+		}
+
+		}
     }
 
     return DefWindowProc (hWnd, message, wParam, lParam);

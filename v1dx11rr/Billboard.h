@@ -49,7 +49,7 @@ public:
 	D3DXVECTOR3 frontal;
 
 public:
-	BillboardRR(WCHAR* billb, float xx, float zz, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, float anchura, float altura)
+	BillboardRR(const wchar_t* billb, float xx, float zz, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, float anchura, float altura)
 	{
 		//copiamos el device y el device context a la clase terreno
 		d3dContext = D3DContext;
@@ -96,7 +96,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(WCHAR* billb, float anchura, float altura)
+	bool CargaParametros(const wchar_t* billb, float anchura, float altura)
 	{
 		HRESULT d3dResult;
 
@@ -269,11 +269,12 @@ public:
 			return false;
 		}
 
-		CreateLucesBuffer(&d3dDevice);
+		CreateLuzAmbientalBuffer(&d3dDevice);
+		
 		return true;
 	}
 
-	bool UnloadContent()
+	void UnloadContent()
 	{
 		if (colorMapSampler)
 			colorMapSampler->Release();
@@ -356,20 +357,88 @@ public:
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
 		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
 
-		UpdateLuces(gestor);
+		UpdateLuzAmbiental(gestor);
+	
 
-		d3dContext->UpdateSubresource(controlBufferCB, 0, 0, control.get(), 0, 0);
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
-		d3dContext->PSSetConstantBuffers(3, 1, &controlBufferCB);
+		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
 		//cantidad de trabajos
 
 		d3dContext->DrawIndexed(6, 0, 0);
 
 
 	}
+
+
+
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posx, float posy, float posz, GestorDeLuz* gestor)
+	{
+
+
+		//paso de datos, es decir cuanto es el ancho de la estructura
+		unsigned int stride = sizeof(VertexComponent);
+		unsigned int offset = 0;
+
+		//define la estructura del vertice a traves de layout
+		d3dContext->IASetInputLayout(inputLay);
+
+		//define con que buffer trabajara
+		d3dContext->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
+		//define con buffer de indices trabajara
+		d3dContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+		//define la forma de conexion de los vertices
+		d3dContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		//Establece el vertex y pixel shader que utilizara
+		d3dContext->VSSetShader(VertexShaderVS, 0, 0);
+		d3dContext->PSSetShader(solidColorPS, 0, 0);
+		//pasa lo sbuffers al shader
+		d3dContext->PSSetShaderResources(0, 1, &colorMap);
+		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
+
+		//mueve la camara
+		float difz = 0.f - posz;
+		float difx = 0.f - posx;
+		float dist = sqrt(difz * difz + difx * difx);
+		float angle = acos(difx / dist);// * (180.0 / D3DX_PI);
+
+		D3DXMATRIX rotationMat;
+		D3DXMatrixIdentity(&rotationMat);
+
+		rotationMat._11 = rotationMat._33 = difx / dist;
+		rotationMat._13 = difz / dist;
+		rotationMat._31 = -rotationMat._13;
+
+		D3DXMATRIX translationMat;
+		D3DXMatrixTranslation(&translationMat, posx, posy, posz);
+
+		D3DXMATRIX worldMat = rotationMat * translationMat;
+		D3DXMatrixTranspose(&worldMat, &worldMat);
+		//actualiza los buffers del shader
+		d3dContext->UpdateSubresource(worldCB, 0, 0, &worldMat, 0, 0);
+		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);
+		d3dContext->UpdateSubresource(projCB, 0, 0, &proyeccion, 0, 0);
+
+		UpdateLuzAmbiental(gestor);
+
+
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+		//le pasa al shader los buffers
+		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
+		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
+		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
+		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
+		//cantidad de trabajos
+
+		d3dContext->DrawIndexed(6, 0, 0);
+
+
+	}
+
 
 	void estableceIndices()
 	{

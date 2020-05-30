@@ -24,12 +24,21 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
-cbuffer ControlDiaNoche : register (b3)
+cbuffer luzAmbiental : register (b3)
 {
 	float4 ambient;
-	float4 rgbColor;
-	float4 dirLuz;
+	float3 rgbColor;
+	float atenuadorAmbiental;
 	
+};
+
+cbuffer luzDifusa : register (b4)
+{
+	float4 difusa;
+	float4 ubicacionLuz;
+	float3 ubicacionCamara;
+	float atenuadorDifuso;
+
 };
 
 struct VS_Input
@@ -74,7 +83,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 	float4 fColor = float4(1,0,0,1);
 
-	float4 aportacionAmbiental = ambient * rgbColor * 0.6f;
+	float4 aportacionAmbiental = ambient * float4(rgbColor,1.f) * atenuadorAmbiental;
 
 
 	float4 text0 = colorMap0.Sample(colorSampler, pix.tex0);
@@ -90,10 +99,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float4 Blend = blendMap1.Sample(colorSampler, pix.blendTex);
 
 	float coeficienteDifuso = 0.5f;
-	float3 luzDifusa;
 	
-
-
 	float4 textf;
 
 	textf = text0;
@@ -118,9 +124,10 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
 	float3 newnormal = mul(TBN, normalize(bump));
 
-	float3 vectorLuz = dirLuz.xyz - pix.position.xyz;
+	float3 vectorLuz = ubicacionLuz.xyz - pix.position.xyz;
+	
 
-	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *coeficienteDifuso;
+	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *atenuadorDifuso;
 
 	
 	

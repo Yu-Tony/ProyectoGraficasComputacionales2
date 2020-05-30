@@ -1,7 +1,6 @@
 #ifndef ___GSLUX
 #define ___GSLUX
 #include <ctime>
-#include <conio.h>
 #include <vector>
 #include <iostream>
 struct vector3 {
@@ -31,6 +30,20 @@ struct ControlDiaNocheBuffer {
 
 };
 
+struct LuzAmbiental {
+	D3DXVECTOR4 luz;
+	D3DXVECTOR3 color;
+	float atenuador;
+
+};
+
+struct LuzDifusa {
+	D3DXVECTOR4 luz;
+	D3DXVECTOR4 ubicacionLuz;
+	D3DXVECTOR3 ubicacionCamara;
+	float atenuador;
+
+};
 
 struct FuenteDeLuz {
 	vector3 ubicacion;
@@ -42,6 +55,7 @@ struct FuenteDeLuz {
 };
 
 class GestorDeLuz {
+
 	static GestorDeLuz* instancia;
 	FuenteDeLuz datos;
 	D3DXVECTOR3 posCam;
@@ -100,7 +114,7 @@ public:
 
 		this->posCam = posCam;
 
-		if (tiempoPrev  < tiempoActual) {
+		if (tiempoPrev +1< tiempoActual) {
 			tiempoPrev = tiempoActual;
 			if (vuelta == false) {
 				if (mañanaTarde < 1.f) {
@@ -188,58 +202,92 @@ GestorDeLuz* GestorDeLuz::instancia = nullptr;
 
 class ComunicacionLuces {
 protected:
-	 std::unique_ptr<ControlDiaNocheBuffer> control;
+	 
+	 std::unique_ptr<LuzAmbiental> luzAmbiental;
+	 std::unique_ptr<LuzDifusa> luzDifusa;
 
-	ID3D11Buffer* controlBufferCB;
+	ID3D11Buffer* luzAmbientalCB;
+	ID3D11Buffer* luzDifusaCB;
 
-	bool CreateLucesBuffer(ID3D11Device** d3dDevice) {
+	
+
+	bool CreateLuzAmbientalBuffer(ID3D11Device** d3dDevice) {
 
 
 		D3D11_BUFFER_DESC constDesc;
 		ZeroMemory(&constDesc, sizeof(constDesc));
 		constDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		constDesc.ByteWidth = sizeof(ControlDiaNocheBuffer);
+		constDesc.ByteWidth = sizeof(LuzAmbiental);
 		constDesc.Usage = D3D11_USAGE_DEFAULT;
 
-		HRESULT d3dResult = (*d3dDevice)->CreateBuffer(&constDesc, 0, &controlBufferCB);
+		HRESULT d3dResult = (*d3dDevice)->CreateBuffer(&constDesc, 0, &luzAmbientalCB);
 
 		if (FAILED(d3dResult))
 		{
 			return false;
 		}
-		control.reset(new ControlDiaNocheBuffer());
+		luzAmbiental = std::make_unique<LuzAmbiental>();
+
+
+	}
+
+	bool CreateLuzDifusaBuffer(ID3D11Device** d3dDevice) {
+
+
+		D3D11_BUFFER_DESC constDesc;
+		ZeroMemory(&constDesc, sizeof(constDesc));
+		constDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc.ByteWidth = sizeof(LuzDifusa);
+		constDesc.Usage = D3D11_USAGE_DEFAULT;
+
+		HRESULT d3dResult = (*d3dDevice)->CreateBuffer(&constDesc, 0, &luzDifusaCB);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		luzDifusa = std::make_unique<LuzDifusa>();
 
 
 	}
 
 
 	
-	void UpdateLuces(GestorDeLuz* gestor) {
-		control->ambiental.x = gestor->getDatos().ambiental;
-		control->ambiental.y = gestor->getDatos().ambiental;
-		control->ambiental.z = gestor->getDatos().ambiental;
-		control->ambiental.w = 1.f;
-
-		control->color.x = gestor->getDatos().color.x / 255.f;
-		control->color.y = gestor->getDatos().color.y / 255.f;
-		control->color.z = gestor->getDatos().color.z / 255.f;
 
 
+	
+	void UpdateLuzAmbiental(GestorDeLuz* gestor) {
+		luzAmbiental->luz.x = gestor->getDatos().ambiental;
+		luzAmbiental->luz.y = gestor->getDatos().ambiental;
+		luzAmbiental->luz.z = gestor->getDatos().ambiental;
+		luzAmbiental->luz.w = 1.f;
 
-		control->color.w = 1.f;
+		luzAmbiental->color.x = gestor->getDatos().color.x / 255.f;
+		luzAmbiental->color.y = gestor->getDatos().color.y / 255.f;
+		luzAmbiental->color.z = gestor->getDatos().color.z / 255.f;
 
-		control->dirLuz.x = gestor->getDatos().dirLuz.x;
-		control->dirLuz.y = gestor->getDatos().dirLuz.y;
-		control->dirLuz.z = gestor->getDatos().dirLuz.z;
-		control->dirLuz.w = 0.f;
+		luzAmbiental->atenuador = 0.8f;
+		}
 
-		control->posCam.x = gestor->getPosCam().x;
-		control->posCam.y = gestor->getPosCam().y;
-		control->posCam.z = gestor->getPosCam().z;
-		control->posCam.w = 0.f;
+
+	void UpdateLuzDifusa(GestorDeLuz* gestor) {
+
+		luzDifusa->luz.x = 1.f;
+		luzDifusa->luz.y = 1.f;
+		luzDifusa->luz.z = 1.f;
+		luzDifusa->luz.w = 1.f;
+
+		luzDifusa->ubicacionLuz.x = gestor->getDatos().dirLuz.x;
+		luzDifusa->ubicacionLuz.y = gestor->getDatos().dirLuz.y;
+		luzDifusa->ubicacionLuz.z = gestor->getDatos().dirLuz.z;
+		luzDifusa->ubicacionLuz.w = 0.f;
+
+		luzDifusa->ubicacionCamara.x = gestor->getPosCam().x;
+		luzDifusa->ubicacionCamara.y = gestor->getPosCam().y;
+		luzDifusa->ubicacionCamara.z = gestor->getPosCam().z;
 		
+		luzDifusa->atenuador = 0.5f;
 	}
-
 
 };
 #endif

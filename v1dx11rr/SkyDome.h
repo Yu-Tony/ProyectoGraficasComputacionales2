@@ -65,7 +65,7 @@ private:
 
 public:
 	SkyDome(int slices, int stacks, float radio, ID3D11Device** d3dDevice,
-		ID3D11DeviceContext** d3dContext, WCHAR* diffuseTex0, WCHAR* diffuseTex1, WCHAR* diffuseTex2)
+		ID3D11DeviceContext** d3dContext, const wchar_t* diffuseTex0, const wchar_t* diffuseTex1, const wchar_t* diffuseTex2)
 	{
 	
 		this->slices = slices;
@@ -113,7 +113,7 @@ public:
 		return true;
 	}
 
-	bool LoadContent(WCHAR* diffuseTex, WCHAR* diffuseTex1, WCHAR* diffuseTex2)
+	bool LoadContent(const wchar_t* diffuseTex, const wchar_t* diffuseTex1, const wchar_t* diffuseTex2)
 	{
 		HRESULT d3dResult;
 
@@ -279,7 +279,7 @@ public:
 		}
 		matrices = new MatrixType;
 
-		CreateLucesBuffer(d3dDevice);
+		CreateLuzAmbientalBuffer(d3dDevice);
 
 	
 
@@ -331,7 +331,7 @@ public:
 		matrices->viewMatrix = view;
 		matrices->projMatrix = projection;
 	
-		UpdateLuces(gestor);
+		UpdateLuzAmbiental(gestor);
 		
 		
 		
@@ -368,9 +368,9 @@ public:
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
 
 
-		(*d3dContext)->UpdateSubresource(controlBufferCB, 0, 0, control.get(), sizeof(ControlDiaNocheBuffer), 0);
+		(*d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), sizeof(LuzAmbiental), 0);
 		
-		(*d3dContext)->PSSetConstantBuffers(1, 1, &controlBufferCB);
+		(*d3dContext)->PSSetConstantBuffers(1, 1, &luzAmbientalCB);
 
 
 		(*d3dContext)->DrawIndexed(cantIndex, 0, 0);

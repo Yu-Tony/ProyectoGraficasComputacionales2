@@ -20,15 +20,22 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
-cbuffer ControlDiaNoche : register (b3)
+cbuffer luzAmbiental : register (b3)
 {
 	float4 ambient;
-	float4 rgbColor;
-	float4 dirLuz;
-	float4 posView;
+	float3 rgbColor;
+	float atenuadorAmbiental;
 
 };
 
+cbuffer luzDifusa : register (b4)
+{
+	float4 difusa;
+	float4 ubicacionLuz;
+	float3 ubicacionCamara;
+	float atenuadorDifuso;
+
+};
 
 struct VS_Input
 {
@@ -76,29 +83,24 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 		float4 text0 = colorMap.Sample(colorSampler, pix.tex0);
 		float4 normal0 = normalMap.Sample(colorSampler, pix.tex0);
 	
-		float4 aportacionAmbiental = ambient * rgbColor*0.6f;
+		float4 aportacionAmbiental = ambient * float4(rgbColor,1.f)*atenuadorAmbiental;
 
-		float4 DiffuseColor = float4(1.0f, 1.0f, 1.f, 1.0f);
-	
-	
 		float3 bump = 2.0 * normal0 - 1.0;
-		bump = normalize(bump);
+	
 
 		float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
 	
-		float3 vectorLuz = dirLuz - pix.position.xyz;
 
-		float3 newnormal = mul(TBN, normalize(vectorLuz));  //<------------------
+		float3 vectorLuz = ubicacionLuz - pix.position.xyz;
 
+		float3 newnormal = mul(TBN, normalize(vectorLuz));  
 
-
-		float4 FALL = dot(bump, normalize(newnormal));
+		float4 FALL = dot(normalize(bump), newnormal);
 	
-		float4 aportacionDifusa = saturate(DiffuseColor * FALL*0.4f);
+		float4 aportacionDifusa = saturate(difusa * FALL) * atenuadorDifuso;
 
-		
-		float ViewDir = normalize(posView - pix.position.xyz);
-		
+		float ViewDir = normalize(ubicacionCamara - pix.position.xyz);
+
 		float3 bumpTBN = normalize(mul(bump, TBN));
 		float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
 		float specular = pow(saturate(dot(Reflect, ViewDir)), 4);

@@ -18,12 +18,14 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
-cbuffer ControlDiaNoche : register (b3)
+cbuffer luzAmbiental : register (b3)
 {
 	float4 ambient;
-	float4 rgbColor;
-	float4 dirLuz;
+	float3 rgbColor;
+	float atenuadorAmbiental;
+
 };
+
 
 struct VS_Input
 {
@@ -61,7 +63,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 		clip(-1);
 	}
 
-	float4 aportacionAmbiental = ambient * rgbColor;
+	float4 aportacionAmbiental = ambient * float4(rgbColor,1.f);
 
 	return text*(aportacionAmbiental);
 }
