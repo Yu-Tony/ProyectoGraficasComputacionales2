@@ -57,6 +57,7 @@ class Modelo:public ComunicacionLuces{
 
 	ID3D11ShaderResourceView* colorMap;
 	ID3D11ShaderResourceView* normalMap;
+	ID3D11ShaderResourceView* opacityMap;
 
 	ID3D11SamplerState* colorMapSampler;
 
@@ -78,6 +79,10 @@ class Modelo:public ComunicacionLuces{
 
 
 public:
+
+	Modelo(Modelo *m) {
+		*this = *m;
+	}
 	Modelo(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string map,std::string normalMap, Obj obj)
 	{
 		
@@ -90,6 +95,7 @@ public:
 		const WCHAR* text = w.c_str();
 		
 		std::string normal = map;
+		std::string opacity = map;
 		int counter = 0;
 		for (char& c : normal) {
 			if (c != '.') {
@@ -101,26 +107,31 @@ public:
 			
 		}
 		normal = normal.substr(0, counter);
+		opacity = normal;
 		normal += "Normal.jpg";
-		//normal = "sandNormal.jpg";
+		opacity += "Opacity.jpg";
+		
 		
 		
 		std::wstring wNormal;
 		std::copy(normal.c_str(), normal.c_str() + strlen(normal.c_str()), back_inserter(wNormal));
 		const WCHAR* textNormal = wNormal.c_str();
+		
+		std::wstring wOpacity;
+		std::copy(opacity.c_str(), opacity.c_str() + strlen(opacity.c_str()), back_inserter(wOpacity));
+		const WCHAR* textOpacity = wOpacity.c_str();
 		getBTN();
-		CargaParametros(text, textNormal);
+		CargaParametros(text, textNormal, textOpacity);
 
 	}
 
-	/*
-	~Modelo()
-	{
-		//libera recursos
-		
-		UnloadContent();
-	}*/
-private:
+	
+	//~Modelo()
+	//{
+	//	//libera recursos
+	//	
+	//	
+	//}
 
 	bool CompileD3DShader(WCHAR* filePath, char* entry, char* shaderModel, ID3DBlob** buffer)
 	{
@@ -150,7 +161,7 @@ private:
 
 
 
-	bool CargaParametros(const WCHAR* map,const WCHAR* normalMap)
+	bool CargaParametros(const WCHAR* map,const WCHAR* normalMap, const WCHAR* opacityMap)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -279,6 +290,8 @@ private:
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
 		
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
+
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
 		
 
 		if (FAILED(d3dResult))
@@ -350,7 +363,7 @@ private:
 
 		return true;
 	}
-	public:
+
 
 	void UnloadContent()
 	{
@@ -361,6 +374,9 @@ private:
 		
 		if (normalMap)
 			normalMap->Release();
+
+		if (opacityMap)
+			opacityMap->Release();
 		
 
 
@@ -383,7 +399,7 @@ private:
 		colorMapSampler = 0;
 		colorMap = 0;
 		normalMap = 0;
-
+		opacityMap = 0;
 
 		VertexShaderVS = 0;
 		solidColorPS = 0;
@@ -395,7 +411,7 @@ private:
 		worldCB = 0;
 	}
 
-
+	public:
 	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXMATRIX matrizMundo, GestorDeLuz* gestor)
 	{
 		static float rotation = 0.0f;
@@ -421,6 +437,7 @@ private:
 		//pasa lo sbuffers al shader
 		d3dContext->PSSetShaderResources(0, 1, &colorMap);
 		d3dContext->PSSetShaderResources(1, 1, &normalMap);
+		d3dContext->PSSetShaderResources(2, 1, &opacityMap);
 	
 		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
 
@@ -447,8 +464,8 @@ private:
 		UpdateLuzAmbiental(gestor);
 		UpdateLuzDifusa(gestor);
 
-		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
-		d3dContext->UpdateSubresource(luzDifusaCB, 0, 0, luzDifusa.get(), 0, 0);
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, &luzAmbiental, 0, 0);
+		d3dContext->UpdateSubresource(luzDifusaCB, 0, 0, &luzDifusa, 0, 0);
 
 		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
 		d3dContext->PSSetConstantBuffers(4, 1, &luzDifusaCB);
@@ -460,7 +477,7 @@ private:
 
 	}
 
-
+	
 	void getBTN() {
 		for (int i = 0; i < obj.cuenta; i += 3) {
 			D3DXVECTOR3 v0(obj.caras[i].x, obj.caras[i].y, obj.caras[i].z);
@@ -534,5 +551,13 @@ private:
 		}
 	}
 
+
+
+	
 };
+
+
+
+
+
 #endif

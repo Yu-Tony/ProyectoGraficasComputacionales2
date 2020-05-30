@@ -360,7 +360,7 @@ public:
 		UpdateLuzAmbiental(gestor);
 	
 
-		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, &luzAmbiental, 0, 0);
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
@@ -426,7 +426,7 @@ public:
 		UpdateLuzAmbiental(gestor);
 
 
-		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+		d3dContext->UpdateSubresource(luzAmbientalCB, 0, 0, &luzAmbiental, 0, 0);
 		//le pasa al shader los buffers
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);

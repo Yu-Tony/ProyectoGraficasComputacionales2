@@ -2,6 +2,7 @@ Texture2D colorMap : register(t0);
 
 Texture2D normalMap : register(t1);
 
+Texture2D opacityMap: register(t2);
 
 SamplerState colorSampler : register(s0);
 
@@ -79,7 +80,9 @@ PS_Input VS_Main(VS_Input vertex)
 }
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
-{ 
+{
+		
+
 		float4 text0 = colorMap.Sample(colorSampler, pix.tex0);
 		float4 normal0 = normalMap.Sample(colorSampler, pix.tex0);
 	
@@ -109,5 +112,11 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 		float4 aporteEspecular = luzEspecular * specular;
 
-	return text0 * (aportacionAmbiental + aportacionDifusa+ aporteEspecular*0.1f);
+		float4 opacity = opacityMap.Sample(colorSampler, pix.tex0);
+
+		if (opacity.r < 0.1) {
+			clip(-1);
+		}
+
+	return text0 * (aportacionAmbiental + aportacionDifusa+ aporteEspecular*0.f);
 }

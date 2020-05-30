@@ -480,12 +480,12 @@ public:
 
 		UpdateLuzAmbiental(gestor);
 		UpdateLuzDifusa(gestor);
-		(d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), 0, 0);
+		(d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, &luzAmbiental, 0, 0);
 
 		d3dContext->PSSetConstantBuffers(3, 1, &luzAmbientalCB);
 
 
-		(d3dContext)->UpdateSubresource(luzDifusaCB, 0, 0, luzDifusa.get(), 0, 0);
+		(d3dContext)->UpdateSubresource(luzDifusaCB, 0, 0, &luzDifusa, 0, 0);
 
 		d3dContext->PSSetConstantBuffers(4, 1, &luzDifusaCB);
 

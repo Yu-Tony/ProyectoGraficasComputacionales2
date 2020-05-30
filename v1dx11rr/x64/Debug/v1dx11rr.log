@@ -68,9 +68,9 @@ C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(542
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(544,23): warning C4018: '<': no coinciden signed/unsigned
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(342,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(402,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(430,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(355,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(418,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(447,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(138,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(179,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(237,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
@@ -83,11 +83,13 @@ C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(380,21): message : este argumento se utiliza como un tamaño de búfer
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(388,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(388,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(294,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(295,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(306,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(307,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(299,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(300,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(311,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(312,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(316,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(322,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(326,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(74,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(98,26): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(104,27): warning C4305: '=': truncamiento de 'double' a 'float'
@@ -98,11 +100,11 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:         [
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:             _Ty=int
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:         ]
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(97): message : vea la referencia a la creación de instancias de plantilla de función "std::unique_ptr<BillboardRR,std::default_delete<_Ty>> std::make_unique<BillboardRR,const wchar_t(&)[7],int,int,ID3D11Device*&,ID3D11DeviceContext*&,float,float,0>(const wchar_t (&)[7],int &&,int &&,ID3D11Device *&,ID3D11DeviceContext *&,float &&,float &&)" que se está compilando
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(97): message :         with
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(97): message :         [
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(97): message :             _Ty=BillboardRR
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(97): message :         ]
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(102): message : vea la referencia a la creación de instancias de plantilla de función "std::unique_ptr<BillboardRR,std::default_delete<_Ty>> std::make_unique<BillboardRR,const wchar_t(&)[7],int,int,ID3D11Device*&,ID3D11DeviceContext*&,float,float,0>(const wchar_t (&)[7],int &&,int &&,ID3D11Device *&,ID3D11DeviceContext *&,float &&,float &&)" que se está compilando
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(102): message :         with
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(102): message :         [
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(102): message :             _Ty=BillboardRR
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(102): message :         ]
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(232): warning C4715: 'ComunicacionLuces::CreateLuzAmbientalBuffer': no todas las rutas de acceso de control devuelven un valor
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(252): warning C4715: 'ComunicacionLuces::CreateLuzDifusaBuffer': no todas las rutas de acceso de control devuelven un valor
   v1dx11rr.vcxproj -> C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\TerrenoSkyBill.exe

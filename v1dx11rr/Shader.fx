@@ -127,7 +127,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3 vectorLuz = ubicacionLuz.xyz - pix.position.xyz;
 	
 
-	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *atenuadorDifuso;
+	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *0.5f;
 
 	
 	

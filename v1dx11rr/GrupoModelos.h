@@ -3,7 +3,7 @@
 #include "Modelo.h"
 
 
-namespace AxelGuapo {
+
 
 	struct Material {
 		char nombre[255];     //material name
@@ -400,5 +400,5 @@ namespace AxelGuapo {
 
 	};
 
-}
+
 #endif

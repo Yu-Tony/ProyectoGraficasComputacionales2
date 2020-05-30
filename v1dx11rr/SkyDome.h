@@ -368,7 +368,7 @@ public:
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
 
 
-		(*d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, luzAmbiental.get(), sizeof(LuzAmbiental), 0);
+		(*d3dContext)->UpdateSubresource(luzAmbientalCB, 0, 0, &luzAmbiental, sizeof(LuzAmbiental), 0);
 		
 		(*d3dContext)->PSSetConstantBuffers(1, 1, &luzAmbientalCB);
 

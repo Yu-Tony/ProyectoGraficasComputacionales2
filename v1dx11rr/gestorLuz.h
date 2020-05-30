@@ -203,8 +203,8 @@ GestorDeLuz* GestorDeLuz::instancia = nullptr;
 class ComunicacionLuces {
 protected:
 	 
-	 std::unique_ptr<LuzAmbiental> luzAmbiental;
-	 std::unique_ptr<LuzDifusa> luzDifusa;
+	 LuzAmbiental luzAmbiental;
+	 LuzDifusa luzDifusa;
 
 	ID3D11Buffer* luzAmbientalCB;
 	ID3D11Buffer* luzDifusaCB;
@@ -226,7 +226,7 @@ protected:
 		{
 			return false;
 		}
-		luzAmbiental = std::make_unique<LuzAmbiental>();
+		
 
 
 	}
@@ -246,7 +246,7 @@ protected:
 		{
 			return false;
 		}
-		luzDifusa = std::make_unique<LuzDifusa>();
+		
 
 
 	}
@@ -257,36 +257,36 @@ protected:
 
 	
 	void UpdateLuzAmbiental(GestorDeLuz* gestor) {
-		luzAmbiental->luz.x = gestor->getDatos().ambiental;
-		luzAmbiental->luz.y = gestor->getDatos().ambiental;
-		luzAmbiental->luz.z = gestor->getDatos().ambiental;
-		luzAmbiental->luz.w = 1.f;
+		luzAmbiental.luz.x = gestor->getDatos().ambiental;
+		luzAmbiental.luz.y = gestor->getDatos().ambiental;
+		luzAmbiental.luz.z = gestor->getDatos().ambiental;
+		luzAmbiental.luz.w = 1.f;
 
-		luzAmbiental->color.x = gestor->getDatos().color.x / 255.f;
-		luzAmbiental->color.y = gestor->getDatos().color.y / 255.f;
-		luzAmbiental->color.z = gestor->getDatos().color.z / 255.f;
+		luzAmbiental.color.x = gestor->getDatos().color.x / 255.f;
+		luzAmbiental.color.y = gestor->getDatos().color.y / 255.f;
+		luzAmbiental.color.z = gestor->getDatos().color.z / 255.f;
 
-		luzAmbiental->atenuador = 0.8f;
+		luzAmbiental.atenuador = 0.8f;
 		}
 
 
 	void UpdateLuzDifusa(GestorDeLuz* gestor) {
 
-		luzDifusa->luz.x = 1.f;
-		luzDifusa->luz.y = 1.f;
-		luzDifusa->luz.z = 1.f;
-		luzDifusa->luz.w = 1.f;
+		luzDifusa.luz.x = 0.8f;
+		luzDifusa.luz.y = 0.8f;
+		luzDifusa.luz.z = 0.8f;
+		luzDifusa.luz.w = 1.f;
 
-		luzDifusa->ubicacionLuz.x = gestor->getDatos().dirLuz.x;
-		luzDifusa->ubicacionLuz.y = gestor->getDatos().dirLuz.y;
-		luzDifusa->ubicacionLuz.z = gestor->getDatos().dirLuz.z;
-		luzDifusa->ubicacionLuz.w = 0.f;
+		luzDifusa.ubicacionLuz.x = gestor->getDatos().dirLuz.x;
+		luzDifusa.ubicacionLuz.y = gestor->getDatos().dirLuz.y;
+		luzDifusa.ubicacionLuz.z = gestor->getDatos().dirLuz.z;
+		luzDifusa.ubicacionLuz.w = 0.f;
 
-		luzDifusa->ubicacionCamara.x = gestor->getPosCam().x;
-		luzDifusa->ubicacionCamara.y = gestor->getPosCam().y;
-		luzDifusa->ubicacionCamara.z = gestor->getPosCam().z;
+		luzDifusa.ubicacionCamara.x = gestor->getPosCam().x;
+		luzDifusa.ubicacionCamara.y = gestor->getPosCam().y;
+		luzDifusa.ubicacionCamara.z = gestor->getPosCam().z;
 		
-		luzDifusa->atenuador = 0.5f;
+		luzDifusa.atenuador = 0.2f;
 	}
 
 };

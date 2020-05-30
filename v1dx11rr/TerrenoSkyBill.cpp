@@ -10,7 +10,7 @@
 
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
+bool flag = true;
 DXRR *dxrr;
 GamePadRR *gamePad;
 
@@ -57,7 +57,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	SetTimer(hWnd, 100, 33, NULL);
     MSG msg;
 
-    while(TRUE)
+    while(flag)
     {
         if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
@@ -117,7 +117,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 						
 					}
 
-					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/25.f;
+					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/250.f;
 					
 				}
 
@@ -132,22 +132,31 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 	
 			} break;
 
-
+		
 		case WM_KEYDOWN: {
+			switch (wParam) {
+			case'A':{
 
-		case 'A': {
-
-			std::string s = dxrr->getPosCam();
-			std::wstring stemp = std::wstring(s.begin(), s.end());
-			LPCWSTR sw = stemp.c_str();
+					std::string s = dxrr->getPosCam();
+					std::wstring stemp = std::wstring(s.begin(), s.end());
+					LPCWSTR sw = stemp.c_str();
 
 
-			MessageBox(0, sw, 0, 0);
+					MessageBox(0, sw, 0, 0);
 
-			wParam = 0;
-			break;
-		}
+					wParam = 0;
+					break;
+				}
 
+
+
+				case 'P': {
+
+					flag = false;
+
+					break;
+				}
+			}
 		}
     }
 

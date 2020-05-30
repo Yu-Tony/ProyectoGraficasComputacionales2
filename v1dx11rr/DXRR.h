@@ -57,7 +57,10 @@ public:
 	GestorDeLuz* gestorDeLuz;
 	
 	
-	std::unique_ptr<AxelGuapo::GrupoModelos> esfinge;
+	std::unique_ptr<GrupoModelos> esfinge;
+	std::unique_ptr<GrupoModelos> box;
+	std::unique_ptr<GrupoModelos> arbol;
+
 
 	float izqder;
 	float arriaba;
@@ -83,16 +86,18 @@ public:
 		camara = std::make_unique<Camara>(D3DXVECTOR3(132.f,80.f,-164.121f), D3DXVECTOR3(0,80,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		TexturaTerreno* map0, *map1,  *map2;
 		map0 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");    //AZUL
-		map1 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");  //ROJO
+		map1 = new TexturaTerreno(L"tierra.jpg", L"tierraNormal.jpg");  //ROJO
 		map2 = new TexturaTerreno(L"sand1.jpg", L"sandNormal.jpg");   //VERDE
-		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap2.jpg", L"blend1.jpg");
+		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap23.jpg", L"blend12.jpg");
 		//tetera = new Modelo(d3dDevice, d3dContext, L"Tex_0901_0.jpg", L"sandNormal.jpg");
 		delete map0; delete map1; delete map2;
 		skydome = std::make_unique<SkyDome>(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
 		
 		
-		esfinge= std::make_unique <AxelGuapo::GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/esfinge.obj", "modelos/esfinge/esfinge.mtl");
-		
+		esfinge= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/esfinge.obj", "modelos/esfinge/esfinge.mtl");
+		box = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "casa.obj", "casa.mtl");
+		arbol=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/arbol/arbol.obj", "modelos/arbol/arbol.mtl");
+
 		
 		billboard = std::make_unique<BillboardRR>(L"mP.png", 0, 0, d3dDevice, d3dContext, 1196/4.f, 100.f);
 	
@@ -310,14 +315,23 @@ public:
 		D3DXMatrixMultiply(aux, aux1, aux);
 		D3DXMatrixTranslation(aux1, 146.91, terreno->Superficie(146.91f, -133.28f) -7.3f, -133.28f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-
-
 		esfinge->setMatrizMundo(*aux, terreno.get());
 		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-		
 
-		
 
+		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		box->setMatrizMundo(*aux, terreno.get());
+		box->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		
+		aux1 = new D3DXMATRIX();
+		arbol->setMatrizMundo(*aux, terreno.get());
+		D3DXMatrixScaling(aux1, 1.f, 1.f, 1.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		delete aux1;
 		swapChain->Present( 1, 0 );
 	}
 
