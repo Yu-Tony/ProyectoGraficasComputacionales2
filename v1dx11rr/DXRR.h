@@ -50,6 +50,7 @@ public:
 
 	
 	std::unique_ptr<TerrenoRR> terreno;
+	std::unique_ptr<TerrenoRR> lago;
 	std::unique_ptr<SkyDome> skydome;
 	std::unique_ptr<BillboardRR> billboard;
 	std::unique_ptr<Camara> camara;
@@ -89,8 +90,11 @@ public:
 		map1 = new TexturaTerreno(L"tierra.jpg", L"tierraNormal.jpg");  //ROJO
 		map2 = new TexturaTerreno(L"sand1.jpg", L"sandNormal.jpg");   //VERDE
 		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap23.jpg", L"blend12.jpg");
-		//tetera = new Modelo(d3dDevice, d3dContext, L"Tex_0901_0.jpg", L"sandNormal.jpg");
 		delete map0; delete map1; delete map2;
+		map0 = new TexturaTerreno(L"agua.jpg", L"aguaNormal.jpg");
+		lago = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, L"hAgua.jpg", L"blend12.jpg");
+		delete map0;
+		
 		skydome = std::make_unique<SkyDome>(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
 		
 		
@@ -289,6 +293,7 @@ public:
 		skydome->Render(camara->posCam);
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		lago->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 		
 		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,-242.63f, -20.f, -32.69f, gestorDeLuz);
 	

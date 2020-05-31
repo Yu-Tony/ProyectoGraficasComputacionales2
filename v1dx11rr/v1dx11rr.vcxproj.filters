@@ -60,6 +60,9 @@
     <FxCompile Include="Modelo.fx">
       <Filter>Archivos de código fuente</Filter>
     </FxCompile>
+    <FxCompile Include="Shader1.fx">
+      <Filter>Archivos de código fuente</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TerrenoSkyBill.cpp">
