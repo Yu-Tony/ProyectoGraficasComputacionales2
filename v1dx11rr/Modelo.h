@@ -69,6 +69,7 @@ class Modelo:public ComunicacionLuces{
 	ID3D11ShaderResourceView* colorMap;
 	ID3D11ShaderResourceView* normalMap;
 	ID3D11ShaderResourceView* opacityMap;
+	ID3D11ShaderResourceView* specularMap;
 	ID3D11ShaderResourceView* displacementMap;
 
 	ID3D11SamplerState* colorMapSampler;
@@ -111,7 +112,8 @@ public:
 		const WCHAR* text = w.c_str();
 		
 		std::string normal = map;
-		std::string opacity = map;
+		std::string opacity;
+		std::string specular;
 		int counter = 0;
 		for (char& c : normal) {
 			if (c != '.') {
@@ -123,10 +125,10 @@ public:
 			
 		}
 		normal = normal.substr(0, counter);
-		opacity = normal;
+		opacity =specular= normal;
 		normal += "Normal.jpg";
 		opacity += "Opacity.jpg";
-		
+		specular += "Especular.jpg";
 		
 		
 		std::wstring wNormal;
@@ -136,8 +138,13 @@ public:
 		std::wstring wOpacity;
 		std::copy(opacity.c_str(), opacity.c_str() + strlen(opacity.c_str()), back_inserter(wOpacity));
 		const WCHAR* textOpacity = wOpacity.c_str();
+
+		std::wstring wEspecular;
+		std::copy(specular.c_str(), specular.c_str() + strlen(specular.c_str()), back_inserter(wEspecular));
+		const WCHAR* textSpecular = wEspecular.c_str();
+
 		getBTN();
-		CargaParametros(text, textNormal, textOpacity);
+		CargaParametros(text, textNormal, textOpacity, textSpecular);
 
 	}
 
@@ -184,7 +191,7 @@ public:
 		std::copy(opacity.c_str(), opacity.c_str() + strlen(opacity.c_str()), back_inserter(wOpacity));
 		const WCHAR* textOpacity = wOpacity.c_str();
 		getBTN();
-		CargaParametros(text, textNormal, textOpacity, textD);
+		CargaParametros(text, textNormal, textOpacity, textD, 0);
 
 	}
 
@@ -221,7 +228,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(const WCHAR* map, const WCHAR* normalMap, const WCHAR* opacityMap, const WCHAR* displacementMap)
+	bool CargaParametros(const WCHAR* map, const WCHAR* normalMap, const WCHAR* opacityMap, const WCHAR* displacementMap, int agua)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -436,7 +443,7 @@ public:
 	}
 
 
-	bool CargaParametros(const WCHAR* map,const WCHAR* normalMap, const WCHAR* opacityMap)
+	bool CargaParametros(const WCHAR* map,const WCHAR* normalMap, const WCHAR* opacityMap, const WCHAR* specularMap)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -567,6 +574,8 @@ public:
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
+		
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, specularMap, 0, 0, &this->specularMap, 0);
 
 		displacementMap = nullptr;
 
@@ -652,7 +661,10 @@ public:
 			normalMap->Release();
 
 		if (opacityMap)
-			opacityMap->Release();
+			opacityMap->Release();	
+		
+		if (specularMap)
+			specularMap->Release();
 		
 		if (displacementMap)
 			displacementMap->Release();
@@ -677,6 +689,8 @@ public:
 		colorMap = 0;
 		normalMap = 0;
 		opacityMap = 0;
+		specularMap = 0;
+		displacementMap = 0;
 
 		VertexShaderVS = 0;
 		solidColorPS = 0;
@@ -715,10 +729,15 @@ public:
 		d3dContext->PSSetShaderResources(0, 1, &colorMap);
 		d3dContext->PSSetShaderResources(1, 1, &normalMap);
 		d3dContext->PSSetShaderResources(2, 1, &opacityMap);
+		
+
 		if (displacementMap != nullptr) {
 
 
 			d3dContext->VSSetShaderResources(3, 1, &displacementMap);
+		}
+		else {
+			d3dContext->PSSetShaderResources(3, 1, &specularMap);
 		}
 		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
 

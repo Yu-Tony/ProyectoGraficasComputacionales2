@@ -22,6 +22,7 @@ struct vector3 {
 };
 
 
+
 struct ControlDiaNocheBuffer {
 	D3DXVECTOR4 ambiental;
 	D3DXVECTOR4 color;
@@ -36,6 +37,7 @@ struct LuzAmbiental {
 	float atenuador;
 
 };
+
 
 struct LuzDifusa {
 	D3DXVECTOR4 luz;
@@ -53,6 +55,8 @@ struct FuenteDeLuz {
 	
 	
 };
+
+
 
 class GestorDeLuz {
 

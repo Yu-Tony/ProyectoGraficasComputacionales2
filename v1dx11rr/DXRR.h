@@ -27,6 +27,8 @@ class DXRR{
 private:
 	int ancho;
 	int alto;
+	float anchoF;
+		float altoF;
 public:	
 	HINSTANCE hInstance;
 	HWND hWnd;
@@ -70,14 +72,25 @@ public:
 	float izqder;
 	float arriaba;
 	float vel;
+
+
+	bool wPressed;
+	bool aPressed;
+	bool sPressed;
+	bool dPressed;
 	
+	float mouseX;
+	float mouseY;
 
-
-
+	bool gamePad = false;
     DXRR(HWND hWnd, int Ancho, int Alto)
 	{
 		ancho = Ancho;
 		alto = Alto;
+		anchoF = (float)ancho;
+		altoF = (float)alto;
+		mouseX = ancho / 2;
+		mouseY = alto / 2;
 		driverType = D3D_DRIVER_TYPE_NULL;
 		featureLevel = D3D_FEATURE_LEVEL_11_0;
 		d3dDevice = 0;
@@ -103,7 +116,7 @@ public:
 		
 		
 		obelisco= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/obelisco/obe.obj", "modelos/obelisco/obe.mtl");
-		box = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "casa.obj", "casa.mtl");
+		box = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/casa/casa.obj", "modelos/casa/casa.mtl");
 		arbol=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/arbol/arbol.obj", "modelos/arbol/arbol.mtl");
 		lago = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/lago/lago.obj", "modelos/lago/lago.mtl", "modelos/lago/aguaDisplacement.jpg");
 		arbusto = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/bush/bush.obj", "modelos/bush/bush.mtl");
@@ -111,8 +124,12 @@ public:
 		
 		billboard = std::make_unique<BillboardRR>(L"mP.png", 0, 0, d3dDevice, d3dContext, 925.f/2.f, 500.f/2.f);
 	
-	
+		wPressed = false;
+		aPressed = false;
+		sPressed = false;
+		dPressed = false;
 
+		
 
 	}
 
@@ -290,8 +307,26 @@ public:
 		d3dContext->ClearRenderTargetView( backBufferTarget, clearColor );
 		d3dContext->ClearDepthStencilView( depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
 		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 5 ;
+		if (!gamePad) {
+			izqder = (mouseX - anchoF / 2) / (anchoF * 50);
+			arriaba = -(mouseY - altoF / 2) / (altoF * 50);
+		}
 		camara->UpdateCam(vel, arriaba, izqder);
+		if (wPressed) {
+			camara->posCam += camara->refFront * .25f;
+		}
+		if (sPressed) {
+			camara->posCam += camara->refFront * -.25f;
+		}
+		if (aPressed) {
+			camara->posCam += camara->refRight * 0.25f;
+		}
+		if (dPressed) {
+			camara->posCam +=camara->refRight * -0.25f;
+		}
 		
+		
+
 		gestorDeLuz->Update(camara->getPosCam());
 		skydome->Update(camara->vista, camara->proyeccion, gestorDeLuz);
 
@@ -306,9 +341,13 @@ public:
 		int posX, posZ;
 
 
+		//colisiones limitrofes
+		CollisionDetection(camara->getPosCam().x, -162.24f);
+
+
 		//// obelisco
 		
-		posX = -120.89f; posZ = 45.58f;
+		posX = -162.24f; posZ = 45.58f;
 		D3DXMATRIX* aux, * aux1; // aux1 = new D3DXMATRIX();
 		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		aux1= D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
@@ -323,7 +362,7 @@ public:
 		obelisco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 	
 
-		posX = -120.89f; posZ = -49.47f;
+		posX = -162.24f; posZ = -49.47f;
 		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		aux1 = D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
@@ -349,7 +388,9 @@ public:
 		box->setMatrizMundo(*aux, terreno.get());
 		box->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+		CollisionDetection(camara->getPosCam().x, camara->getPosCam().z, -74.37f, -154.72f, 18.f, 18.f);
 
+		const int ANCHOARBOL =2.f;
 		////arbol
 		posX = 174.34f; posZ = 10.75f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
@@ -359,6 +400,7 @@ public:
 		
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+		CollisionDetection(camara->getPosCam().x, camara->getPosCam().z, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 
 		posX =81.22f; posZ = 2.8f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
@@ -367,8 +409,9 @@ public:
 		arbol->setMatrizMundo(*aux, terreno.get());
 
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-		
-		
+
+		CollisionDetection(camara->getPosCam().x, camara->getPosCam().z, posX, posZ, ANCHOARBOL, ANCHOARBOL);
+			
 		////arbusto
 
 		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
@@ -581,6 +624,7 @@ public:
 		swapChain->Present( 1, 0 );
 	}
 
+
 	//Activa el alpha blend para dibujar con transparencias
 	void TurnOnAlphaBlending()
 	{
@@ -691,5 +735,25 @@ public:
 
 		return sPosicion;
 	}
+
+	void CollisionDetection(float xP, float zP, float x0,  float z0, float ancho, float profundidad) {
+		if ((xP <= x0 + ancho / 2 && xP >= x0 - ancho / 2) && (zP <= z0 + profundidad / 2 && zP >= z0 - profundidad / 2)) {
+			vel = -1;
+		}
+	}
+
+	void CollisionDetection(float ejeCam, float ejeWorld) {
+		if (ejeWorld > 0) {
+			if (ejeCam >= ejeWorld) {
+				vel = -1;
+			}
+		}
+		else {
+			if (ejeCam <= ejeWorld){
+				vel = -1;
+			}
+		}
+	}
+	
 };
 #endif

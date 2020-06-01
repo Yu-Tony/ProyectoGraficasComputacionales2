@@ -4,6 +4,8 @@ Texture2D normalMap : register(t1);
 
 Texture2D opacityMap: register(t2);
 
+Texture2D specularMap: register(t3);
+
 SamplerState colorSampler : register(s0);
 
 cbuffer cbChangerEveryFrame : register(b0)
@@ -102,21 +104,30 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	
 		float4 aportacionDifusa = saturate(difusa * FALL)*atenuadorDifuso;
 
-		float ViewDir = normalize(ubicacionCamara - pix.position.xyz);
+		float4 sMap = specularMap.Sample(colorSampler, pix.tex0);
 
-		float3 bumpTBN = normalize(mul(bump, TBN));
-		float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
-		float specular = pow(saturate(dot(Reflect, ViewDir)), 30);
+		float4 aportacionEspecular;
+		float nivelEspecular=1.f;
+		
+			float ViewDir = normalize(ubicacionCamara - pix.position.xyz);
 
-		float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
+			float3 bumpTBN = normalize(mul(bump, TBN));
+			float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
+			float specular = pow(saturate(dot(Reflect, ViewDir)), 10);
 
-		float4 aporteEspecular = luzEspecular * specular;
+			float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
 
+			aportacionEspecular = luzEspecular * specular;
+
+			 nivelEspecular = sMap.r;
+		
 		float4 opacity = opacityMap.Sample(colorSampler, pix.tex0);
+
+
 
 		if (opacity.r < 0.5) {
 			clip(-1);
 		}
 
-	return text0 * (aportacionAmbiental + aportacionDifusa);
+	return text0 * (aportacionAmbiental + aportacionDifusa+(aportacionEspecular*nivelEspecular));
 }
