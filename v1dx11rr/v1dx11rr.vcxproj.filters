@@ -60,7 +60,7 @@
     <FxCompile Include="Modelo.fx">
       <Filter>Archivos de código fuente</Filter>
     </FxCompile>
-    <FxCompile Include="Shader1.fx">
+    <FxCompile Include="Shader1.hlsl">
       <Filter>Archivos de código fuente</Filter>
     </FxCompile>
   </ItemGroup>

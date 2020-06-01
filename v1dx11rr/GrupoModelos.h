@@ -41,6 +41,15 @@
 			setMatrizMundo(matrizIdentidad);
 			std::cout << std::endl;
 		}
+
+		GrupoModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string archivoObj, std::string archivoMtl, std::string displacementMap) {
+			getParameters(archivoObj, archivoMtl);
+			cargaModelos(D3DDevice, D3DContext, displacementMap);
+			D3DXMATRIX matrizIdentidad;
+			D3DXMatrixIdentity(&matrizIdentidad);
+			setMatrizMundo(matrizIdentidad);
+			std::cout << std::endl;
+		}
 		~GrupoModelos() {
 			for (Modelo& mod : modelos) {
 				mod.UnloadContent();
@@ -91,7 +100,19 @@
 			}
 			std::cout << std::endl;
 		}
+		void cargaModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string displacementMap) {
+			for (Obj& obj : objs) {
+				for (Material& mtl : materials) {
+					if (strcmp(obj.mtl.c_str(), mtl.nombre) == 0) {
 
+						modelos.push_back(Modelo(D3DDevice, D3DContext, mtl.map_Kd, mtl.map_Kd, displacementMap, obj));
+
+					}
+
+				}
+			}
+			std::cout << std::endl;
+		}
 
 
 
@@ -179,7 +200,7 @@
 						int cuenta = vertexIndices.size();
 
 
-						int vI = 0, uvI = 0, nI = 0;
+						
 						obj = new Obj(cuenta);
 						obj->mtl = material;
 						for (int i = 0; i < cuenta; i++) {

@@ -59,7 +59,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 	float4 text = colorMap.Sample(colorSampler, pix.tex0);
 
-	if (text.a < 0.25) {
+	if (text.a < 0.50) {
 		clip(-1);
 	}
 

@@ -1,8 +1,7 @@
 #ifndef _dxrr
 #define _dxrr
 
-#define ESFINGESXZ 0.1f
-#define ESFINGESY 0.1f
+
 #define ESFINGEROTX	270.f
 #define ESFINGETRY -53.f
 
@@ -50,7 +49,7 @@ public:
 
 	
 	std::unique_ptr<TerrenoRR> terreno;
-	std::unique_ptr<TerrenoRR> lago;
+	
 	std::unique_ptr<SkyDome> skydome;
 	std::unique_ptr<BillboardRR> billboard;
 	std::unique_ptr<Camara> camara;
@@ -58,9 +57,14 @@ public:
 	GestorDeLuz* gestorDeLuz;
 	
 	
-	std::unique_ptr<GrupoModelos> esfinge;
+	std::unique_ptr<GrupoModelos> obelisco;
 	std::unique_ptr<GrupoModelos> box;
 	std::unique_ptr<GrupoModelos> arbol;
+	std::unique_ptr<GrupoModelos> arbusto;
+	std::unique_ptr<GrupoModelos> arbusto1;
+
+
+	std::unique_ptr<GrupoModelos> lago;
 
 
 	float izqder;
@@ -89,21 +93,23 @@ public:
 		map0 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");    //AZUL
 		map1 = new TexturaTerreno(L"tierra.jpg", L"tierraNormal.jpg");  //ROJO
 		map2 = new TexturaTerreno(L"sand1.jpg", L"sandNormal.jpg");   //VERDE
-		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap23.jpg", L"blend12.jpg");
+		terreno = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, map1, map2, L"Heighmap211.jpg", L"blend12.jpg");
 		delete map0; delete map1; delete map2;
 		map0 = new TexturaTerreno(L"agua.jpg", L"aguaNormal.jpg");
-		lago = std::make_unique<TerrenoRR>(500, 500, d3dDevice, d3dContext, map0, L"hAgua.jpg", L"blend12.jpg");
+
 		delete map0;
 		
 		skydome = std::make_unique<SkyDome>(32, 32, 350.0f, &d3dDevice, &d3dContext, L"Sky1.png", L"Sky2.png", L"Sky3.png");
 		
 		
-		esfinge= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/esfinge.obj", "modelos/esfinge/esfinge.mtl");
+		obelisco= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/obelisco/obe.obj", "modelos/obelisco/obe.mtl");
 		box = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "casa.obj", "casa.mtl");
 		arbol=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/arbol/arbol.obj", "modelos/arbol/arbol.mtl");
-
+		lago = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/lago/lago.obj", "modelos/lago/lago.mtl", "modelos/lago/aguaDisplacement.jpg");
+		arbusto = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/bush/bush.obj", "modelos/bush/bush.mtl");
+		arbusto1 = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/bush1/bush1.obj", "modelos/bush1/bush1.mtl");
 		
-		billboard = std::make_unique<BillboardRR>(L"mP.png", 0, 0, d3dDevice, d3dContext, 1196/4.f, 100.f);
+		billboard = std::make_unique<BillboardRR>(L"mP.png", 0, 0, d3dDevice, d3dContext, 925.f/2.f, 500.f/2.f);
 	
 	
 
@@ -293,50 +299,285 @@ public:
 		skydome->Render(camara->posCam);
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-		lago->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-		
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,-242.63f, -20.f, -32.69f, gestorDeLuz);
 	
 		
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,-242.47f*3.f, -200.f,0.f, gestorDeLuz);
+	
+		int posX, posZ;
 
+
+		//// obelisco
 		
+		posX = -120.89f; posZ = 45.58f;
 		D3DXMATRIX* aux, * aux1; // aux1 = new D3DXMATRIX();
-		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		aux1= D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(180.f));
+		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		aux1= D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
 		D3DXMatrixMultiply(aux, aux, aux1);		
-		D3DXMatrixScaling(aux1, ESFINGESXZ, ESFINGESY, ESFINGESXZ);
-		D3DXMatrixMultiply(aux, aux1, aux);
-		D3DXMatrixTranslation(aux1,134.25f, terreno->Superficie(134.25f,-133.28f)-10.f, -133.28f);
+		D3DXMatrixScaling(aux1, 0.6f,1.6f, 0.6f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1,posX,3.9511f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 	
 		
-		esfinge->setMatrizMundo(*aux, terreno.get());
-		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		obelisco->setMatrizMundo(*aux, terreno.get());
+		obelisco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 	
-		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		aux1 = D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(180.f));
+
+		posX = -120.89f; posZ = -49.47f;
+		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		aux1 = D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixScaling(aux1, ESFINGESXZ, ESFINGESY, ESFINGESXZ);
-		D3DXMatrixMultiply(aux, aux1, aux);
-		D3DXMatrixTranslation(aux1, 146.91, terreno->Superficie(146.91f, -133.28f) -7.3f, -133.28f);
+		D3DXMatrixScaling(aux1, 0.6f, 1.6f, 0.6f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		esfinge->setMatrizMundo(*aux, terreno.get());
-		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		D3DXMatrixTranslation(aux1, posX, 0.f , posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		obelisco->setMatrizMundo(*aux, terreno.get());
+		obelisco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
 
-		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+
+
+
+		////casa
+		aux = D3DXMatrixRotationX(&box->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		aux1 = D3DXMatrixRotationY(&box->getMatrizMundo(), D3DXToRadian(90.f));
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, -74.37f, terreno->Superficie(-74.37f, -154.72f) -10.3f, -154.72f);
+		D3DXMatrixMultiply(aux, aux, aux1);
 		box->setMatrizMundo(*aux, terreno.get());
 		box->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		
-		aux1 = new D3DXMATRIX();
-		arbol->setMatrizMundo(*aux, terreno.get());
-		D3DXMatrixScaling(aux1, 1.f, 1.f, 1.f);
+
+		////arbol
+		posX = 174.34f; posZ = 10.75f;
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ)-18.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
+		arbol->setMatrizMundo(*aux, terreno.get());
+		
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		delete aux1;
+
+		posX =81.22f; posZ = 2.8f;
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 14.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbol->setMatrizMundo(*aux, terreno.get());
+
+		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		
+		
+		////arbusto
+
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, 174.47f, terreno->Superficie(174.47f, -3.96f)-10.f, -3.96f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, 152.08f, terreno->Superficie(152.08f, 20.48f) - 12.f, 20.48f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+		posX = 151.01f; posZ = -62.89f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 123.62f; posZ = -68.35f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+
+		posX = 99.55f; posZ = -60.55f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+
+		posX = 78.94f; posZ = -27.69f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+
+		posX = 85.02f; posZ = -3.89f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+		posX = 105.6f; posZ = 15.57f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 108.02f; posZ = -48.99f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 177.9f; posZ = -26.71f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 137.6f; posZ = -67.38f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+		posX = 78.73f; posZ = -54.93f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+
+		posX = 167.33f; posZ = 7.89f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+		posX = 113.5f; posZ =20.5f;
+		aux = D3DXMatrixRotationX(&arbusto->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 2.3f, 2.3f, 2.3f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 8.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto->setMatrizMundo(*aux, terreno.get());
+
+		arbusto->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		////arbusto1
+		posX = 170.79f; posZ = -37.53f;
+		aux = D3DXMatrixRotationX(&arbusto1->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 0.03f, 0.03f, 0.03f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto1->setMatrizMundo(*aux, terreno.get());
+
+		arbusto1->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 129.15f; posZ = 22.87f;
+		aux = D3DXMatrixRotationX(&arbusto1->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 0.03f, 0.03f, 0.03f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto1->setMatrizMundo(*aux, terreno.get());
+
+		arbusto1->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 84.51f; posZ = -47.89f;
+		aux = D3DXMatrixRotationX(&arbusto1->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 0.03f, 0.03f, 0.03f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto1->setMatrizMundo(*aux, terreno.get());
+
+		arbusto1->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		posX = 137.6f; posZ = -67.38f;
+		aux = D3DXMatrixRotationX(&arbusto1->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 0.03f, 0.03f, 0.03f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		arbusto1->setMatrizMundo(*aux, terreno.get());
+
+		arbusto1->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+
+		////lago
+
+		aux = D3DXMatrixRotationX(&lago->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 1.5f, 1.5f, 1.5f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, 125.26f,3.111f, -11.33f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		lago->setMatrizMundo(*aux);
+		lago->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+
+	
+	
 		swapChain->Present( 1, 0 );
 	}
 

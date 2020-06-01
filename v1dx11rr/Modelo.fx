@@ -72,7 +72,7 @@ PS_Input VS_Main(VS_Input vertex)
 
 	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));
 
-	vsOut.tangent= mul(vertex.tangente, worldMatrix);
+	vsOut.tangent= normalize(mul(vertex.tangente, worldMatrix));
 
 	vsOut.binorm = normalize(cross(vsOut.tangent, vsOut.normal));
 
@@ -100,13 +100,13 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 		float4 FALL = dot(normalize(bump), newnormal);
 	
-		float4 aportacionDifusa = saturate(difusa * FALL) * atenuadorDifuso;
+		float4 aportacionDifusa = saturate(difusa * FALL)*atenuadorDifuso;
 
 		float ViewDir = normalize(ubicacionCamara - pix.position.xyz);
 
 		float3 bumpTBN = normalize(mul(bump, TBN));
 		float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
-		float specular = pow(saturate(dot(Reflect, ViewDir)), 4);
+		float specular = pow(saturate(dot(Reflect, ViewDir)), 30);
 
 		float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
 
@@ -114,9 +114,9 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 		float4 opacity = opacityMap.Sample(colorSampler, pix.tex0);
 
-		if (opacity.r < 0.1) {
+		if (opacity.r < 0.5) {
 			clip(-1);
 		}
 
-	return text0 * (aportacionAmbiental + aportacionDifusa+ aporteEspecular*0.f);
+	return text0 * (aportacionAmbiental + aportacionDifusa);
 }

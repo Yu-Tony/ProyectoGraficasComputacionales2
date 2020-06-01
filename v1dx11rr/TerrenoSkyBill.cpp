@@ -117,7 +117,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 						
 					}
 
-					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/250.f;
+					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/25.f;
 					
 				}
 

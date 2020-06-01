@@ -64,6 +64,9 @@ private:
 	ID3D11ShaderResourceView* blendMap0;
 	ID3D11ShaderResourceView* blendMap1;
 
+	ID3D11ShaderResourceView* displacementMap0;
+
+
 	ID3D11SamplerState* colorMapSampler;
 
 	ID3D11Buffer* viewCB;
@@ -162,7 +165,7 @@ public:
 		//cargamos el shaders de vertices que esta contenido en el Shader.fx, note
 		//que VS_Main es el nombre del vertex shader en el shader, vsBuffer contendra
 		//al puntero del mismo
-		bool compileResult = CompileD3DShader(L"Shader1.fx", "VS_Main", "vs_4_0", &vsBuffer);
+		bool compileResult = CompileD3DShader(L"Shader1.fx", "VS_Main", "vs_5_0", &vsBuffer);
 		//en caso de no poder cargarse ahi muere la cosa
 		if (compileResult == false)
 		{
@@ -209,7 +212,7 @@ public:
 		ID3DBlob* psBuffer = 0;
 		// de los vertices pasamos al pixel shader, note que el nombre del shader es el mismo
 		//ahora buscamos al pixel shader llamado PS_Main
-		compileResult = CompileD3DShader(L"Shader1.fx", "PS_Main", "ps_4_0", &psBuffer);
+		compileResult = CompileD3DShader(L"Shader1.fx", "PS_Main", "ps_5_0", &psBuffer);
 
 		if (compileResult == false)
 		{
@@ -299,6 +302,7 @@ public:
 		normalMap1 = normalMap2 = nullptr;
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, heightTex, 0, 0, &blendMap0, 0);
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, mapaBlending, 0, 0, &blendMap1, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"aguaDisplacement1.jpg", 0, 0, &displacementMap0, 0);
 
 		if (FAILED(d3dResult))
 		{
@@ -723,6 +727,7 @@ public:
 			d3dContext->PSSetShaderResources(1, 1, &normalMap0);	
 			d3dContext->PSSetShaderResources(2, 1, &blendMap0);
 			d3dContext->PSSetShaderResources(3, 1, &blendMap1);
+			d3dContext->VSSetShaderResources(4, 1, &displacementMap0);
 		}
 
 		//mueve la camara
