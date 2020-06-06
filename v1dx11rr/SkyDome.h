@@ -41,6 +41,8 @@ private:
 	ID3D11InputLayout* inputLayout;
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;
+	ID3D11Buffer* movTexturasBuffer;
+	D3DXVECTOR4 movTexturas;
 
 	ID3D11ShaderResourceView* textura;
 	ID3D11ShaderResourceView* textura1;
@@ -281,7 +283,18 @@ public:
 
 		CreateLuzAmbientalBuffer(d3dDevice);
 
-	
+		D3D11_BUFFER_DESC constDescMov;
+		ZeroMemory(&constDescMov, sizeof(constDescMov));
+		constDescMov.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDescMov.ByteWidth = sizeof(D3DXVECTOR4);
+		constDescMov.Usage = D3D11_USAGE_DEFAULT;
+
+		 d3dResult = (*d3dDevice)->CreateBuffer(&constDescMov, 0, &movTexturasBuffer);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
 
 
 		return true;
@@ -307,6 +320,9 @@ public:
 			vertexBuffer->Release();
 		if (indexBuffer)
 			indexBuffer->Release();
+		if (movTexturasBuffer)
+			movTexturasBuffer->Release();
+
 		if (matrixBufferCB)
 			matrixBufferCB->Release();
 		
@@ -320,6 +336,7 @@ public:
 		inputLayout = 0;
 		vertexBuffer = 0;
 		indexBuffer = 0;
+		movTexturasBuffer = 0;
 		matrixBufferCB = 0;
 	
 
@@ -332,8 +349,9 @@ public:
 		matrices->projMatrix = projection;
 	
 		UpdateLuzAmbiental(gestor);
-		
-		
+		movTexturas.x=gestor->getSkydomeParam().x;
+		movTexturas.y = gestor->getSkydomeParam().y;
+		movTexturas.z = gestor->getSkydomeParam().z;
 		
 	}
 
@@ -362,6 +380,8 @@ public:
 		D3DXMatrixTranspose(&worldMat, &worldMat);
 		matrices->worldMatrix = worldMat;
 
+
+
 		(*d3dContext)->UpdateSubresource(matrixBufferCB, 0, 0, matrices, sizeof(MatrixType), 0);
 
 
@@ -372,6 +392,11 @@ public:
 		
 		(*d3dContext)->PSSetConstantBuffers(1, 1, &luzAmbientalCB);
 
+		
+
+		(*d3dContext)->UpdateSubresource(movTexturasBuffer, 0, 0, &movTexturas, sizeof(D3DXVECTOR4), 0);
+
+		(*d3dContext)->PSSetConstantBuffers(2, 1, &movTexturasBuffer);
 
 		(*d3dContext)->DrawIndexed(cantIndex, 0, 0);
 	}

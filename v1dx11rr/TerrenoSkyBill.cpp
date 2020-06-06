@@ -126,12 +126,13 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
 						
 					}
-
+					
 					dxrr->vel = gamePad->GetState().Gamepad.bLeftTrigger/dd;
 					
 				}
 				else {
 					dxrr->gamePad = false;
+					
 				}
 		
 
@@ -203,6 +204,12 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
 				break;
 			}
+			case 'Y': {
+
+				dxrr->nn += 10.f;
+
+				break;
+			}
 			}
 			break;
 		}
@@ -234,6 +241,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			if (!gamePad->IsConnected()) {
 				dxrr->mouseX = (float)LOWORD(lParam);
 				dxrr->mouseY = (float)HIWORD(lParam);
+			
 			}
 			break; }
     }

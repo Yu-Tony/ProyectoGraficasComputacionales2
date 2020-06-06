@@ -56,9 +56,9 @@ C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(608,1):
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56279): message : vea la definición anterior de 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(609,1): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h(56288): message : vea la definición anterior de 'D3D10_ERROR_FILE_NOT_FOUND'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(99,13): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(174,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(176,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(109,13): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(198,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(207,1): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(259,85): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(367,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(367,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
@@ -72,171 +72,382 @@ C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoRR.h(849
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(423,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(640,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(709,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(747,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(159,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(200,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(258,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(258,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(343,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(343,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(393,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(393,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(401,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(401,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(409,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(409,21): message : este argumento se utiliza como un tamaño de búfer
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(92,18): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(93,17): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(350,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(350,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(352,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(353,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(357,44): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(357,30): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(365,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(365,28): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(366,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(367,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(371,43): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(371,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(381,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(641,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(714,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\Modelo.h(753,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(154,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(190,1): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(248,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(248,21): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(333,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(333,21): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(383,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(383,21): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(391,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(391,21): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(399,21): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'unsigned __int64'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\GrupoModelos.h(399,21): message : este argumento se utiliza como un tamaño de búfer
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(106,18): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(107,17): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(378,29): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(378,59): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(382,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(393,25): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(383,77): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(395,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(395,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(396,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(397,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(397,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(397,75): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(397,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(403,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(403,68): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(405,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(405,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(406,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(407,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(407,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(407,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(407,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(413,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(413,68): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(417,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(427,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(437,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(437,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(438,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(441,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(441,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(441,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(441,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(447,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(447,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(448,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(451,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(451,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(451,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(451,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(459,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(459,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(460,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(463,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(463,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(463,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(463,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(471,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(471,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(472,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(475,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(475,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(475,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(475,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(483,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(483,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(484,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(487,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(487,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(487,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(397,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(398,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(402,42): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(402,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(409,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(409,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(413,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(413,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(415,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(416,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(420,42): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(420,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(427,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(427,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(432,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(432,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(434,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(435,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(439,43): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(439,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(446,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(447,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(452,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(452,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(454,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(455,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(459,44): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(459,30): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(467,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(467,28): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(468,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(469,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(473,43): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(473,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(480,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(480,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(482,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(483,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(487,43): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(487,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(494,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(494,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(495,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(498,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(498,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(498,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(498,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(504,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(504,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(505,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(514,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(514,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(515,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(518,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(518,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(518,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(518,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(524,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(524,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(525,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(528,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(528,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(528,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(528,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(535,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(535,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(536,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(539,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(539,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(539,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(539,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(547,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(547,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(548,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(558,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(558,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(559,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(562,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(562,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(562,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(562,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(569,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(569,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(570,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(579,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(579,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(580,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(583,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(583,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(583,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(583,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(589,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(589,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(590,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(593,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(593,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(593,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(593,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(599,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(599,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(600,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(613,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(494,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(494,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(497,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(497,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(498,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(499,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(503,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(503,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(503,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(503,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(508,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(511,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(511,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(512,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(513,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(517,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(517,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(517,78): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(517,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(522,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(522,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(525,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(525,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(526,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(531,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(531,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(531,78): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(531,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(536,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(536,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(541,26): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(543,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(543,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(544,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(545,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(545,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(545,75): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(545,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,127): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(551,121): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(553,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(553,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(554,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(555,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(555,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(555,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(555,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(561,126): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(561,120): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(563,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(563,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(564,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(565,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(565,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(565,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(565,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(571,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(571,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,11): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(573,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(574,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(575,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(575,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(575,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(575,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(581,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(581,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(584,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(584,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(585,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(586,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(586,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(586,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(586,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(592,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(592,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(595,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(595,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(596,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(597,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(597,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(597,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(597,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,128): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(603,122): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(606,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(606,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(607,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(610,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(610,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(610,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(610,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(619,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(619,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(620,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(623,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(623,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(623,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(623,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(629,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(629,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(630,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(633,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(633,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(633,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(633,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(639,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(639,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(640,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(643,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(643,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(643,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(643,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(651,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(661,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(671,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(671,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(672,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(675,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(675,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(675,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(675,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(681,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(681,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(682,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(685,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(685,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(685,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(685,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(693,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(693,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(694,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(697,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(697,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(697,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(697,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(705,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(705,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(706,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(709,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(709,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(709,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(709,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(717,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(717,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(718,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(721,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(721,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(721,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(721,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(728,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(728,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(729,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(732,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(732,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(732,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(732,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(738,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(738,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(739,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(742,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(742,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(742,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(742,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(748,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(748,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(749,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(752,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(752,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(752,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(752,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(758,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(758,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(759,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(762,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(762,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(762,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(762,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(769,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(769,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(770,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(773,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(773,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(773,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(773,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(781,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(781,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(782,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(785,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(785,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(785,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(785,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(792,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(792,24): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(793,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(796,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(796,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(796,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(796,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(802,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(802,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(803,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(806,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(806,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(806,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(806,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(812,9): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(812,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(813,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(816,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(816,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(816,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(816,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(822,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(822,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(823,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(826,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(826,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(826,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(826,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(832,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(832,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(833,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(836,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(836,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(836,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(836,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(842,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(842,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(843,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(846,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(846,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(846,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(846,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(852,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(852,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(853,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(856,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(856,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(856,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(856,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(863,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(863,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(864,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(867,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(867,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(867,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(867,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(873,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(873,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(874,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(877,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(877,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(877,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(877,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(883,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(883,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(884,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(887,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(887,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(887,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(887,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(893,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(893,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(895,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(898,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(898,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(898,76): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(898,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(905,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(905,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(906,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(909,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(909,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(909,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(909,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(915,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(915,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(916,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(919,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(919,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(919,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(919,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(925,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(925,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(926,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(929,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(929,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(929,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(929,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(935,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(935,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(936,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(939,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(939,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(939,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(939,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(945,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(945,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(946,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(949,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(949,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(949,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(949,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(955,10): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(955,27): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(956,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(959,63): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(959,57): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(959,77): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(959,31): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(967,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(76,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(108,26): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\TerrenoSkyBill.cpp(114,27): warning C4305: '=': truncamiento de 'double' a 'float'
@@ -247,11 +458,11 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:         [
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:             _Ty=int
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,56): warning C4244:         ]
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(125): message : vea la referencia a la creación de instancias de plantilla de función "std::unique_ptr<BillboardRR,std::default_delete<_Ty>> std::make_unique<BillboardRR,const wchar_t(&)[7],int,int,ID3D11Device*&,ID3D11DeviceContext*&,float,float,0>(const wchar_t (&)[7],int &&,int &&,ID3D11Device *&,ID3D11DeviceContext *&,float &&,float &&)" que se está compilando
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(125): message :         with
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(125): message :         [
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(125): message :             _Ty=BillboardRR
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(125): message :         ]
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(232): warning C4715: 'ComunicacionLuces::CreateLuzAmbientalBuffer': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(252): warning C4715: 'ComunicacionLuces::CreateLuzDifusaBuffer': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(146): message : vea la referencia a la creación de instancias de plantilla de función "std::unique_ptr<BillboardRR,std::default_delete<_Ty>> std::make_unique<BillboardRR,const wchar_t(&)[8],int,int,ID3D11Device*&,ID3D11DeviceContext*&,float,float,0>(const wchar_t (&)[8],int &&,int &&,ID3D11Device *&,ID3D11DeviceContext *&,float &&,float &&)" que se está compilando
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(146): message :         with
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(146): message :         [
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(146): message :             _Ty=BillboardRR
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\DXRR.h(146): message :         ]
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(257): warning C4715: 'ComunicacionLuces::CreateLuzAmbientalBuffer': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\v1dx11rr\gestorLuz.h(277): warning C4715: 'ComunicacionLuces::CreateLuzDifusaBuffer': no todas las rutas de acceso de control devuelven un valor
   v1dx11rr.vcxproj -> C:\Users\Axel\Desktop\6 sem\Gráficas\TerrenoSkyBillGC2\x64\Debug\TerrenoSkyBill.exe

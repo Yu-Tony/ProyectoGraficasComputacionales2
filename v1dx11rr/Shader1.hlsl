@@ -4,11 +4,14 @@ Texture2D normalMap : register(t1);
 
 Texture2D opacityMap: register(t2);
 
-Texture2D displacementMap: register(t3);
+Texture2D displacementMap0: register(t3);
+
+Texture2D displacementMap1 : register(t4);
 
 SamplerState colorSampler : register(s0);
 
-Texture2D displacementMap0 : register(t4);
+
+
 
 cbuffer cbChangerEveryFrame : register(b0)
 {
@@ -77,8 +80,12 @@ struct PS_Input
 PS_Input VS_Main(VS_Input vertex)
 {
 	PS_Input vsOut = (PS_Input)0;
-	float lee = displacementMap.SampleLevel(colorSampler, vertex.tex0, 0).r;
-	vsOut.pos = vertex.pos + float4(vertex.normal * lee *10* animacionDisplacement, 0);
+
+
+	float lee0 = displacementMap0.SampleLevel(colorSampler, vertex.tex0, 0).r;
+	float lee1 = displacementMap1.SampleLevel(colorSampler, vertex.tex0, 0).r;
+	float lee = lerp(lee0, lee1, animacionDisplacement);
+	vsOut.pos = vertex.pos + float4(vertex.normal * lee*2.f , 0);
 
 	vsOut.pos = mul(vsOut.pos, worldMatrix);
 	vsOut.position = vsOut.pos;
@@ -102,21 +109,21 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 
 
-		float4 text0 = colorMap.Sample(colorSampler, pix.tex0 + pix.movTextura/5);
+		float4 text0 = colorMap.Sample(colorSampler, pix.tex0);
 		
-		float4 normal0 = normalMap.Sample(colorSampler, pix.tex0 + pix.movTextura/5);
+		float4 normal0 = normalMap.Sample(colorSampler, pix.tex0 );
 
 		float4 aportacionAmbiental = ambient * float4(rgbColor,1.f) * atenuadorAmbiental;
 
 		float3 bump = 2.0 * normal0 - 1.0;
-
+		bump.x = -1 * bump.x;
 
 		float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
 
 
 		float3 vectorLuz = ubicacionLuz - pix.position.xyz;
 
-		float3 newnormal = mul(pix.normal, normalize(vectorLuz));
+		float3 newnormal = mul(TBN, normalize(vectorLuz));
 
 		float4 FALL = dot(normalize(bump), newnormal);
 
@@ -126,15 +133,12 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 		float3 bumpTBN = normalize(mul(bump, TBN));
 		float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
-		float specular = pow(saturate(dot(Reflect, ViewDir)), 20);
+		float specular = pow(saturate(dot(-Reflect, ViewDir)),40);
 
 		float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
 
-		float4 aporteEspecular = luzEspecular * specular;
+		float4 aporteEspecular =  luzEspecular * specular;
 
-		float4 opacity = opacityMap.Sample(colorSampler, pix.tex0);
-
-		
-		
-	return text0 * (aportacionAmbiental + aportacionDifusa + aporteEspecular*0.1f);
+		text0.a = 0.6f;
+	return text0 * (aportacionAmbiental*0.6f  +aportacionDifusa+ aporteEspecular*0.2f);
 }

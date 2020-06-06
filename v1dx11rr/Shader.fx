@@ -98,7 +98,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 	float4 Blend = blendMap1.Sample(colorSampler, pix.blendTex);
 
-	float coeficienteDifuso = 0.5f;
+	
 	
 	float4 textf;
 
@@ -127,7 +127,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3 vectorLuz = ubicacionLuz.xyz - pix.position.xyz;
 	
 
-	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *0.5f;
+	float4 aportacionDifusa = saturate(dot(normalize(vectorLuz), normalize(newnormal))) *atenuadorDifuso;
 
 	
 	

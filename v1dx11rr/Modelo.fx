@@ -90,11 +90,12 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	
 		float4 aportacionAmbiental = ambient * float4(rgbColor,1.f)*atenuadorAmbiental;
 
+
+
 		float3 bump = 2.0 * normal0 - 1.0;
-	
+		bump.x = -1 * bump.x;
 
 		float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
-	
 
 		float3 vectorLuz = ubicacionLuz - pix.position.xyz;
 
@@ -104,22 +105,24 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	
 		float4 aportacionDifusa = saturate(difusa * FALL)*atenuadorDifuso;
 
+
+
+
 		float4 sMap = specularMap.Sample(colorSampler, pix.tex0);
 
 		float4 aportacionEspecular;
-		float nivelEspecular=1.f;
+	
 		
 			float ViewDir = normalize(ubicacionCamara - pix.position.xyz);
 
 			float3 bumpTBN = normalize(mul(bump, TBN));
 			float3 Reflect = normalize(2 * bumpTBN - normalize(vectorLuz));
-			float specular = pow(saturate(dot(Reflect, ViewDir)), 10);
+			float specular = pow(saturate(dot(Reflect, ViewDir)), 40);
 
 			float4 luzEspecular = float4(1.f, 1.f, 1.f, 1.f);
 
-			aportacionEspecular = luzEspecular * specular;
+			aportacionEspecular = sMap *luzEspecular * specular*1.2f;
 
-			 nivelEspecular = sMap.r;
 		
 		float4 opacity = opacityMap.Sample(colorSampler, pix.tex0);
 
@@ -129,5 +132,5 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 			clip(-1);
 		}
 
-	return text0 * (aportacionAmbiental + aportacionDifusa+(aportacionEspecular*nivelEspecular));
+	return text0 * (aportacionAmbiental + aportacionDifusa+(aportacionEspecular*0.2f));
 }

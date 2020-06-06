@@ -22,6 +22,9 @@ struct vector3 {
 };
 
 
+struct vector2 {
+	float u, v;
+};
 
 struct ControlDiaNocheBuffer {
 	D3DXVECTOR4 ambiental;
@@ -52,6 +55,8 @@ struct FuenteDeLuz {
 	vector3 dirLuz;
 	float ambiental;
 	vector3 color;
+	float difusa;
+	float amanecer = 0.5f;
 	
 	
 };
@@ -76,8 +81,9 @@ class GestorDeLuz {
 		tiempoActual = time(0);
 		 vuelta = false;
 		datos.ambiental = 0.5f;
-		datos.color = vector3(191.25f, 191.25f, 255.f);
-		datos.dirLuz = vector3(-238.f, 5.18f, 243.88f);
+		datos.difusa = 0.4f;
+		datos.color = vector3(204.f, 204.f, 255.f);
+		datos.dirLuz = vector3(-300, 0.f, 300.f);
 	}
 
 	
@@ -112,8 +118,19 @@ public:
 		return datos;
 	}
 
+
+	vector3 getSkydomeParam() {
+		vector3 respuesta;
+		
+		respuesta.x = datos.amanecer;
+		return respuesta;
+	}
+
+
+
+
 	void Update(D3DXVECTOR3 posCam) {
-		float velocidad = 1000.f;
+		
 		tiempoActual = time(0);
 
 		this->posCam = posCam;
@@ -121,49 +138,52 @@ public:
 		if (tiempoPrev +1< tiempoActual) {
 			tiempoPrev = tiempoActual;
 			if (vuelta == false) {
+
+
 				if (mañanaTarde < 1.f) {
 					mañanaTarde += 0.01f;
-					datos.ambiental += 5/velocidad;
+					datos.ambiental += 5/1000.f;
 					if(datos.color.x<255.f)
-					datos.color.x += 0.6375f;
+					datos.color.x += 0.51f;
 					if(datos.color.y<255.f)
-					datos.color.y += 0.6375f;
+					datos.color.y += 0.51f;
 
 					if(datos.dirLuz.x<0.f)
-						datos.dirLuz.x += 2.38f;
+						datos.dirLuz.x += 3.f;
 					if(datos.dirLuz.y<90.f)
 						datos.dirLuz.y += 0.9f;
 					if(datos.dirLuz.z>0.f)
-						datos.dirLuz.z -= 2.4388f;
+						datos.dirLuz.z -= 3.f;
 					
-					
-					
-
+					datos.difusa += 0.006f;
+					datos.amanecer -= 5 / 1000.f;
 
 				}
 				else {
 					if (tardeNoche < 1.f) {
 						tardeNoche += 0.01f;
-						datos.ambiental -= 2/velocidad;
+						datos.ambiental -= 2/1000.f;
 					
-						if (datos.color.y > 127.5f)
-						datos.color.y -= 1.275f;
-						if (datos.color.z > 127.5f)
-						datos.color.z -= 1.275f;
+						if (datos.color.y > 204.f)
+						datos.color.y -= 0.51f;
+						if (datos.color.z > 204.f)
+						datos.color.z -= 0.51f;
 						
-						if (datos.dirLuz.x < 237.27f)
-							datos.dirLuz.x += 2.3727f;
-						if (datos.dirLuz.y > 5.11f)
-							datos.dirLuz.y -= 0.85f;
-						if (datos.dirLuz.z > -240.22f)
-							datos.dirLuz.z -= 2.4022f;
+						if (datos.dirLuz.x <300.f)
+							datos.dirLuz.x += 3.f;
+						if (datos.dirLuz.y > 0.f)
+							datos.dirLuz.y -= 0.9f;
+						if (datos.dirLuz.z > -300.f)
+							datos.dirLuz.z -= 3.f;
 						
-				
+						datos.difusa -= 0.009f;
 					}
 					else {
 						vuelta = true;
 						mañanaTarde = 0.f;
-
+						datos.dirLuz.x = 44.5f;
+						datos.dirLuz.y = 300.f;
+						datos.dirLuz.z = 148.11f;  //LUNA
 					}
 
 				}
@@ -171,19 +191,20 @@ public:
 			else {
 				if (tardeNoche > 0.f) {
 					tardeNoche -= 0.01f;
-					datos.ambiental -= 3/velocidad;
-					if (datos.color.x > 191.25f)
-					datos.color.x -= 0.6375f;
-					if (datos.color.y < 191.25f)
-					datos.color.y += 0.6375;
+					datos.ambiental -= 3/1000.f;
+					if (datos.color.x >204.f)
+					datos.color.x -= 0.51f;
 					if (datos.color.z < 255.f)
-					datos.color.z += 1.275;
-					
+					datos.color.z +=0.51;
+					datos.amanecer += 5 / 1000.f;
 					
 				}
 				else {
 					vuelta = false;
-					datos.dirLuz = 0.f;
+					datos.dirLuz.x = -300.f;
+					datos.dirLuz.y = 0.f;
+					datos.dirLuz.z = 300.f;  
+					datos.difusa = 0.004;//VUELVE A SER SOL
 				}
 
 
@@ -270,15 +291,15 @@ protected:
 		luzAmbiental.color.y = gestor->getDatos().color.y / 255.f;
 		luzAmbiental.color.z = gestor->getDatos().color.z / 255.f;
 
-		luzAmbiental.atenuador = 0.8f;
+		luzAmbiental.atenuador = 0.6f;
 		}
 
 
 	void UpdateLuzDifusa(GestorDeLuz* gestor) {
 
-		luzDifusa.luz.x = 0.8f;
-		luzDifusa.luz.y = 0.8f;
-		luzDifusa.luz.z = 0.8f;
+		luzDifusa.luz.x = gestor->getDatos().difusa;
+		luzDifusa.luz.y = gestor->getDatos().difusa;
+		luzDifusa.luz.z = gestor->getDatos().difusa;
 		luzDifusa.luz.w = 1.f;
 
 		luzDifusa.ubicacionLuz.x = gestor->getDatos().dirLuz.x;
@@ -290,7 +311,7 @@ protected:
 		luzDifusa.ubicacionCamara.y = gestor->getPosCam().y;
 		luzDifusa.ubicacionCamara.z = gestor->getPosCam().z;
 		
-		luzDifusa.atenuador = 0.2f;
+		luzDifusa.atenuador = 0.5f;
 	}
 
 };

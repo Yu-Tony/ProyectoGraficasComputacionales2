@@ -1,7 +1,7 @@
 #ifndef _modelo
 #define _modelo
 
-//#define _XM_NO_INTRINSICS_
+
 
 #include <d3d11.h>
 #include <d3dx11.h>
@@ -22,13 +22,6 @@ struct Agua {
 	float relleno1;
 
 };
-
-struct vector2 {
-	float u, v;
-};
-
-
-
 
 struct Cara {
 	float x, y, z, u, v, nx, ny, nz,tx, ty, tz, bx, by, bz;
@@ -71,6 +64,7 @@ class Modelo:public ComunicacionLuces{
 	ID3D11ShaderResourceView* opacityMap;
 	ID3D11ShaderResourceView* specularMap;
 	ID3D11ShaderResourceView* displacementMap;
+	ID3D11ShaderResourceView* displacementMap1;
 
 	ID3D11SamplerState* colorMapSampler;
 
@@ -148,7 +142,7 @@ public:
 
 	}
 
-	Modelo(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string map, std::string normalMap,std::string displacementMap, Obj obj)
+	Modelo(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string map, std::string normalMap,std::string displacementMap, std::string displacementMap1, Obj obj)
 	{
 
 		d3dContext = D3DContext;
@@ -163,6 +157,11 @@ public:
 		std::copy(displacementMap.c_str(), displacementMap.c_str() + strlen(displacementMap.c_str()), back_inserter(wD));
 
 		const WCHAR* textD = wD.c_str();
+
+		std::wstring wD1;
+		std::copy(displacementMap1.c_str(), displacementMap1.c_str() + strlen(displacementMap1.c_str()), back_inserter(wD1));
+
+		const WCHAR* textD1 = wD1.c_str();
 
 		std::string normal = map;
 		std::string opacity = map;
@@ -191,7 +190,7 @@ public:
 		std::copy(opacity.c_str(), opacity.c_str() + strlen(opacity.c_str()), back_inserter(wOpacity));
 		const WCHAR* textOpacity = wOpacity.c_str();
 		getBTN();
-		CargaParametros(text, textNormal, textOpacity, textD, 0);
+		CargaParametros(text, textNormal, textOpacity, textD, textD1);
 
 	}
 
@@ -228,7 +227,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(const WCHAR* map, const WCHAR* normalMap, const WCHAR* opacityMap, const WCHAR* displacementMap, int agua)
+	bool CargaParametros(const WCHAR* map, const WCHAR* normalMap, const WCHAR* opacityMap, const WCHAR* displacementMap, const WCHAR* displacementMap1)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -360,6 +359,7 @@ public:
 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap, 0, 0, &this->displacementMap, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap1, 0, 0, &this->displacementMap1, 0);
 
 
 		if (FAILED(d3dResult))
@@ -578,6 +578,7 @@ public:
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, specularMap, 0, 0, &this->specularMap, 0);
 
 		displacementMap = nullptr;
+		displacementMap1 = nullptr;
 
 		if (FAILED(d3dResult))
 		{
@@ -669,6 +670,9 @@ public:
 		if (displacementMap)
 			displacementMap->Release();
 
+		if (displacementMap1)
+			displacementMap1->Release();
+
 		if (VertexShaderVS)
 			VertexShaderVS->Release();
 		if (solidColorPS)
@@ -691,6 +695,7 @@ public:
 		opacityMap = 0;
 		specularMap = 0;
 		displacementMap = 0;
+		displacementMap1 = 0;
 
 		VertexShaderVS = 0;
 		solidColorPS = 0;
@@ -735,6 +740,7 @@ public:
 
 
 			d3dContext->VSSetShaderResources(3, 1, &displacementMap);
+			d3dContext->VSSetShaderResources(4, 1, &displacementMap1);
 		}
 		else {
 			d3dContext->PSSetShaderResources(3, 1, &specularMap);
@@ -772,27 +778,44 @@ public:
 
 		if (displacementMap != nullptr) {
 
-			static bool vuelta = false;
+			
+			static bool vuelta1 = false;
 			static float movimientoText = 0.f;
-
-			if (vuelta == false) {
+			static float movimientoDisp = 0.3f;
+			
+				
 				if (movimientoText < 0.03f) {
 					movimientoText += 0.00005f;
 				}
 				else {
-					vuelta = true;
+					movimientoText = 0.f;
+
+				}
+			
+			
+
+			if (vuelta1 == false) {
+
+				if (movimientoDisp < 0.7f) {
+					movimientoDisp += 0.003f;
+				}
+				else {
+					vuelta1 = true;
 
 				}
 			}
 			else {
-				if (movimientoText > 0.0f) {
-					movimientoText -= 0.00005f;
+				if (movimientoDisp > 0.3f) {
+					movimientoDisp -= 0.003f;
 				}
 				else {
-					vuelta = false;
+					vuelta1 = false;
 				}
+
+
 			}
-			lago.animacionDisplacement = movimientoText;
+
+			lago.animacionDisplacement = movimientoDisp;
 			lago.animacionMovimiento = movimientoText;
 			
 			(d3dContext)->UpdateSubresource(lagoBuffer, 0, 0, &lago, 0, 0);
@@ -826,17 +849,6 @@ public:
 			D3DXVECTOR2 deltaUV2 = uv2 - uv0;
 
 
-
-
-			/*D3DXVECTOR3 tangente= (deltaPos1 * deltaUV2.x - deltaPos2 * deltaUV1.x) * r;
-			D3DXVECTOR3 binormal = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x) * r; */
-
-
-
-			/*		D3DXVECTOR3 binormal; D3DXVec3Cross(&binormal, &normal, &tangente);
-					D3DXVec3Normalize(&tangente, &tangente);
-					D3DXVec3Normalize(&binormal, &binormal);*/
-
 			D3DXVECTOR3 normal(obj.caras[i].nx, obj.caras[i].ny, obj.caras[i].nz);
 			float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
 
@@ -848,9 +860,6 @@ public:
 
 			D3DXVECTOR3 binormal;
 
-			//binormal.x = r * (-deltaUV2.x * deltaPos1.x + deltaUV1.x * deltaPos2.x);
-			//binormal.y = r * (-deltaUV2.x * deltaPos1.y + deltaUV1.x * deltaPos2.y);
-			//binormal.z = r * (-deltaUV2.x * deltaPos1.z + deltaUV1.x * deltaPos2.z);
 
 			D3DXVec3Cross(&binormal, &normal, &tangente);
 

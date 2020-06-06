@@ -20,6 +20,10 @@ cbuffer luzAmbiental : register (b1)
 	float atenuador;
 };
 
+cbuffer DiferenteTextura: register (b2) {
+	float4 cual;
+
+}
 
 struct VS_Input
 {
@@ -49,10 +53,14 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 	
 	float4 text0= texture0.Sample(colorSampler, pix.tex0);
+	float4 text1= texture1.Sample(colorSampler, pix.tex0);
 
-
+	
 
 	float4 aportacionAmbiental = ambient * float4(rgbColor,1.f);
 
-	return aportacionAmbiental*text0;
+	
+		float4 textFinal = lerp(text0, text1, cual.x);
+
+	return aportacionAmbiental*textFinal;
 }

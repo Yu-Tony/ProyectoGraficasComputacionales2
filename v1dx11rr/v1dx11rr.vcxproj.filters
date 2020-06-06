@@ -63,6 +63,9 @@
     <FxCompile Include="Shader1.hlsl">
       <Filter>Archivos de código fuente</Filter>
     </FxCompile>
+    <FxCompile Include="BillboardUI.hlsl">
+      <Filter>Archivos de código fuente</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TerrenoSkyBill.cpp">

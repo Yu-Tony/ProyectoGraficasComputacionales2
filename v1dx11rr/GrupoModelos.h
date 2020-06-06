@@ -2,9 +2,6 @@
 #define __gruppmod
 #include "Modelo.h"
 
-
-
-
 	struct Material {
 		char nombre[255];     //material name
 		float expEspecular;
@@ -24,9 +21,7 @@
 	class GrupoModelos {
 
 		std::vector<Obj> objs;
-
 		std::vector<Material> materials;
-
 		std::vector<Modelo> modelos;
 
 		D3DXMATRIX matrizMundo;
@@ -42,9 +37,9 @@
 			std::cout << std::endl;
 		}
 
-		GrupoModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string archivoObj, std::string archivoMtl, std::string displacementMap) {
+		GrupoModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string archivoObj, std::string archivoMtl, std::string displacementMap, std::string displacementMap1) {
 			getParameters(archivoObj, archivoMtl);
-			cargaModelos(D3DDevice, D3DContext, displacementMap);
+			cargaModelos(D3DDevice, D3DContext, displacementMap, displacementMap1);
 			D3DXMATRIX matrizIdentidad;
 			D3DXMatrixIdentity(&matrizIdentidad);
 			setMatrizMundo(matrizIdentidad);
@@ -76,7 +71,7 @@
 
 
 		void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, GestorDeLuz* gestor) {
-			for (Modelo& m : modelos) {
+			for (Modelo &m : modelos) {
 				m.Draw(vista, proyeccion, matrizMundo, gestor);
 			}
 
@@ -100,12 +95,12 @@
 			}
 			std::cout << std::endl;
 		}
-		void cargaModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string displacementMap) {
+		void cargaModelos(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, std::string displacementMap, std::string displacementMap1) {
 			for (Obj& obj : objs) {
 				for (Material& mtl : materials) {
 					if (strcmp(obj.mtl.c_str(), mtl.nombre) == 0) {
 
-						modelos.push_back(Modelo(D3DDevice, D3DContext, mtl.map_Kd, mtl.map_Kd, displacementMap, obj));
+						modelos.push_back(Modelo(D3DDevice, D3DContext, mtl.map_Kd, mtl.map_Kd, displacementMap, displacementMap1, obj));
 
 					}
 
@@ -175,12 +170,7 @@
 						obj->caras[i].ny = normales[normalIndices[i] - 1].y;
 						obj->caras[i].nz = normales[normalIndices[i] - 1].z;
 
-
-
 						obj->indices[i] = i;
-
-
-
 
 					}
 
