@@ -349,9 +349,7 @@ public:
 		matrices->projMatrix = projection;
 	
 		UpdateLuzAmbiental(gestor);
-		movTexturas.x=gestor->getSkydomeParam().x;
-		movTexturas.y = gestor->getSkydomeParam().y;
-		movTexturas.z = gestor->getSkydomeParam().z;
+		movTexturas = gestor->getSkydomeParam();
 		
 	}
 

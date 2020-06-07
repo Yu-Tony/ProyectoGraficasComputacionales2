@@ -7,13 +7,13 @@
 #pragma comment (lib, "d3d11.lib")
 #pragma comment (lib, "d3dx11.lib")
 #pragma comment (lib, "d3dx10.lib")
-
+#pragma comment(lib, "winmm.lib")
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 bool flag = true;
 DXRR *dxrr;
 GamePadRR *gamePad;
-const int ANCHOVENTANA = 800, ALTOVENTANA = 600;
+const int ANCHOVENTANA = 1200, ALTOVENTANA = 800;
 
 
 int WINAPI WinMain(HINSTANCE hInstance,
@@ -58,21 +58,25 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	SetTimer(hWnd, 100, 33, NULL);
     MSG msg;
+	try {
+		while (flag)
+		{
+			if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
 
-    while(flag)
-    {
-        if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+				if (msg.message == WM_QUIT)
+					break;
+			}
 
-            if(msg.message == WM_QUIT)
-                break;
-        }
-	
-        dxrr->Render();
-    }
-
+			dxrr->Render();
+		}
+	}
+	catch (int e) {
+		MessageBoxA(0, "Memoria insuficiente para la carga del programa", "Memoria insuficiente", 0);
+		return 0;
+	}
     return msg.wParam;
 }
 
@@ -86,10 +90,14 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 	static int mouseYPrev = 0;
     switch(message)
     {
-
+	case WM_CREATE:{
+		
+		break;
+	}
 	
 	case WM_DESTROY:
             {
+		PlaySound(0, 0, SND_FILENAME | SND_ASYNC);
 				KillTimer(hWnd, 100);
                 PostQuitMessage(0);
                 return 0;
@@ -207,7 +215,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			case 'Y': {
 
 				dxrr->nn += 10.f;
-
+			
 				break;
 			}
 			}

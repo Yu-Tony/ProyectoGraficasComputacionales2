@@ -65,6 +65,11 @@
 
 		}
 
+
+
+
+
+
 		D3DXMATRIX getMatrizMundo() {
 			return this->matrizMundo;
 		}

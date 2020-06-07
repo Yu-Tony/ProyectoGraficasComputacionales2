@@ -54,13 +54,24 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	
 	float4 text0= texture0.Sample(colorSampler, pix.tex0);
 	float4 text1= texture1.Sample(colorSampler, pix.tex0);
+	float4 text2=texture2.Sample(colorSampler, pix.tex0);
 
 	
 
 	float4 aportacionAmbiental = ambient * float4(rgbColor,1.f);
+	float4 textFinal;
+	if (cual.w < 1.f) {
+		 textFinal = lerp(text2, text0, cual.x);
+	}
+	else {
+		if (cual.y < 1.f) {
+			textFinal = lerp(text0, text1, cual.y);
+		}
+		else {
+			textFinal = lerp(text1, text2, cual.z);
 
-	
-		float4 textFinal = lerp(text0, text1, cual.x);
+		}
+	}
 
 	return aportacionAmbiental*textFinal;
 }

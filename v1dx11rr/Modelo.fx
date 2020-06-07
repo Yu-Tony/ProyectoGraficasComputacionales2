@@ -128,7 +128,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 
 
-		if (opacity.r < 0.5) {
+		if (opacity.r < 0.4f) {
 			clip(-1);
 		}
 

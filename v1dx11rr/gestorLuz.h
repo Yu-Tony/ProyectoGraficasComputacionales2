@@ -57,7 +57,8 @@ struct FuenteDeLuz {
 	vector3 color;
 	float difusa;
 	float amanecer = 0.5f;
-	
+	float atardecer = 0.f;
+	float anochecer = 0.f;
 	
 };
 
@@ -73,13 +74,16 @@ class GestorDeLuz {
 	time_t tiempoActual;
 	time_t tiempoPrev;
 	bool vuelta;
-	
+	bool texturasSkydome;
+
+
 	GestorDeLuz() {
 		mañanaTarde = 0;
 		tardeNoche = 0;
 		tiempoPrev = time(0);
 		tiempoActual = time(0);
 		 vuelta = false;
+		 texturasSkydome = false;
 		datos.ambiental = 0.5f;
 		datos.difusa = 0.4f;
 		datos.color = vector3(204.f, 204.f, 255.f);
@@ -119,10 +123,19 @@ public:
 	}
 
 
-	vector3 getSkydomeParam() {
-		vector3 respuesta;
+	D3DXVECTOR4 getSkydomeParam() {
+		D3DXVECTOR4 respuesta;
 		
 		respuesta.x = datos.amanecer;
+		respuesta.y = datos.atardecer;
+		respuesta.z = datos.anochecer;
+
+		if (!texturasSkydome)
+			respuesta.w = 0.f;
+		else
+			respuesta.w = 1.f;
+
+
 		return respuesta;
 	}
 
@@ -135,7 +148,7 @@ public:
 
 		this->posCam = posCam;
 
-		if (tiempoPrev +1< tiempoActual) {
+		if (tiempoPrev +2< tiempoActual) {
 			tiempoPrev = tiempoActual;
 			if (vuelta == false) {
 
@@ -156,11 +169,15 @@ public:
 						datos.dirLuz.z -= 3.f;
 					
 					datos.difusa += 0.006f;
-					datos.amanecer -= 5 / 1000.f;
+					datos.amanecer += 0.005f;
+
+				
 
 				}
 				else {
-					if (tardeNoche < 1.f) {
+					if (tardeNoche < 1.f) 
+			{
+						texturasSkydome = true;
 						tardeNoche += 0.01f;
 						datos.ambiental -= 2/1000.f;
 					
@@ -177,13 +194,24 @@ public:
 							datos.dirLuz.z -= 3.f;
 						
 						datos.difusa -= 0.009f;
+						if (datos.atardecer < 1.f)
+						{
+							datos.atardecer += 0.02f;
+						}
+						else
+						{
+							datos.anochecer += 0.02f;
+						}
+
 					}
 					else {
 						vuelta = true;
 						mañanaTarde = 0.f;
-						datos.dirLuz.x = 44.5f;
-						datos.dirLuz.y = 300.f;
-						datos.dirLuz.z = 148.11f;  //LUNA
+						datos.difusa = 0.f;
+						texturasSkydome = false;
+						datos.amanecer = 0.f;
+						datos.atardecer = 0.f;
+						datos.anochecer = 0.f;
 					}
 
 				}
@@ -196,7 +224,7 @@ public:
 					datos.color.x -= 0.51f;
 					if (datos.color.z < 255.f)
 					datos.color.z +=0.51;
-					datos.amanecer += 5 / 1000.f;
+					datos.amanecer += 0.005f;
 					
 				}
 				else {
@@ -205,6 +233,7 @@ public:
 					datos.dirLuz.y = 0.f;
 					datos.dirLuz.z = 300.f;  
 					datos.difusa = 0.004;//VUELVE A SER SOL
+					
 				}
 
 

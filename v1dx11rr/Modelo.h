@@ -353,14 +353,20 @@ public:
 		//creamos los indices para hacer el terreno
 
 		//crea los accesos de las texturas para los shaders 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
+		try {
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap, 0, 0, &this->displacementMap, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap1, 0, 0, &this->displacementMap1, 0);
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap, 0, 0, &this->displacementMap, 0);
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, displacementMap1, 0, 0, &this->displacementMap1, 0);
+		}
+		catch (std::bad_alloc c) {
 
+			MessageBoxA(0, "Ha habido un error en la carga de recursos. Cierre otros programas y reinicie la aplicación.", "Error en proceso de dibujo", 0);
+			return false;
+		}
 
 		if (FAILED(d3dResult))
 		{
@@ -569,14 +575,20 @@ public:
 		//creamos los indices para hacer el terreno
 	
 		//crea los accesos de las texturas para los shaders 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
-		
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
+		try {
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, map, 0, 0, &this->colorMap, 0);
 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
-		
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, specularMap, 0, 0, &this->specularMap, 0);
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normalMap, 0, 0, &this->normalMap, 0);
 
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, opacityMap, 0, 0, &this->opacityMap, 0);
+
+			d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, specularMap, 0, 0, &this->specularMap, 0);
+		}
+		catch (std::bad_alloc c) {
+			
+			MessageBoxA(0, "Ha habido un error en la carga de recursos. Cierre otros programas y reinicie la aplicación.", "Error en proceso de dibujo", 0);
+			return false;
+		}
 		displacementMap = nullptr;
 		displacementMap1 = nullptr;
 

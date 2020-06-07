@@ -36,18 +36,24 @@ public:
 
     bool IsConnected()
 	{
+		try {
 		// limpia la estructura de estado
 		ZeroMemory(&estadoControlador, sizeof(XINPUT_STATE));
 
 		// obtiene el estado
-		DWORD Resultado = XInputGetState(numeroControlador, &estadoControlador);
-
+	
+			DWORD Resultado = XInputGetState(numeroControlador, &estadoControlador);
+		
 		if(Resultado == ERROR_SUCCESS)
 		{
 			return true;
 		}
 		else
 		{
+			return false;
+		}
+		}
+		catch (std::bad_alloc) {
 			return false;
 		}
 	}

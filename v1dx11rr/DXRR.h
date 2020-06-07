@@ -71,6 +71,7 @@ public:
 	std::unique_ptr<GrupoModelos> box;
 	std::unique_ptr<GrupoModelos> box1;
 	std::unique_ptr<GrupoModelos> arbol;
+	std::unique_ptr<GrupoModelos> tronco;
 	std::unique_ptr<GrupoModelos> arbusto;
 	std::unique_ptr<GrupoModelos> arbusto1;
 	std::unique_ptr<GrupoModelos> monstera;
@@ -94,6 +95,8 @@ public:
 	float mouseY;
 
 	bool gamePad = false;
+	bool musicaSonando = false;
+
 
 	float nn;
     DXRR(HWND hWnd, int Ancho, int Alto)
@@ -115,7 +118,7 @@ public:
 		izqder = 0;
 		arriaba = 0;
 		gestorDeLuz = GestorDeLuz::getInstancia();
-		camara = std::make_unique<Camara>(D3DXVECTOR3(-30.52f,80.f,-124.f), D3DXVECTOR3(0,80,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
+		camara = std::make_unique<Camara>(D3DXVECTOR3(-30.52f,10.f,-124.f), D3DXVECTOR3(0,0,0), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		TexturaTerreno* map0, *map1,  *map2;
 		map0 = new TexturaTerreno(L"piedra.jpg", L"piedraNormal.jpg");    //AZUL
 		map1 = new TexturaTerreno(L"tierra.jpg", L"tierraNormal.jpg");  //ROJO
@@ -126,44 +129,45 @@ public:
 
 		delete map0;
 		
-		skydome = std::make_unique<SkyDome>(32, 32, 450.0f, &d3dDevice, &d3dContext, L"Sky1.jpg", L"skynight.jpg", L"Sky3.png");
+		skydome = std::make_unique<SkyDome>(32, 32, 450.0f, &d3dDevice, &d3dContext, L"Sky1.jpg", L"Sky2.jpg", L"skynight.jpg");
 		
 		
-		elefante= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/elephant/elephant.obj", "modelos/elephant/elephant.mtl");
+		elefante= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/vehiculo/vehiculo.obj", "modelos/vehiculo/vehiculo.mtl");
 		obelisco= std::make_unique <GrupoModelos>(d3dDevice, d3dContext, "modelos/obelisco/obe.obj", "modelos/obelisco/obe.mtl");
 		box = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/casa/casa.obj", "modelos/casa/casa.mtl");
 		box1 = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/casa1/casa1.obj", "modelos/casa1/casa1.mtl");
-		arbol=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/arbol/arbol.obj", "modelos/arbol/arbol.mtl");
+		arbol=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/arbolF/arbol.obj", "modelos/arbolF/arbol.mtl");
+		tronco=std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/tronco/tronco.obj", "modelos/tronco/tronco.mtl");
 		lago = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/lago/lago.obj", "modelos/lago/lago.mtl", "modelos/lago/aguaDisplacement.jpg", "modelos/lago/aguaDisplacement1.jpg");
 		arbusto = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/bush/bush.obj", "modelos/bush/bush.mtl");
 		arbusto1 = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/bush1/bush1.obj", "modelos/bush1/bush1.mtl");
 		monstera = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/monstera/monstera.obj", "modelos/monstera/monstera.mtl");
-		esfinge = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/esfinge.obj", "modelos/esfinge/esfinge.mtl");
+		esfinge = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/esfinge/BMSudanSandstoneSphinx02.obj", "modelos/esfinge/BMSudanSandstoneSphinx02.mtl");
 		puerta = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/puerta/puerta.obj", "modelos/puerta/puerta.mtl");
 		gato = std::make_unique<GrupoModelos>(d3dDevice, d3dContext, "modelos/gato/gato.obj", "modelos/gato/gato.mtl");
 
-		
-		piramidesMP = std::make_unique<BillboardRR>(L"mP1.png", 0, 0, d3dDevice, d3dContext, 925.f/2.f, 500.f/2.f);
-		piramidesMP2 = std::make_unique<BillboardRR>(L"mP2.png", 0, 0, d3dDevice, d3dContext, 925.f/2.f, 500.f/2.f);
-		arenaMP = std::make_unique<BillboardRR>(L"arena.png", 0, 0, d3dDevice, d3dContext, 925.f/2.f, 500.f/2.f);
-		oasis = std::make_unique<BillboardRR>(L"oasis.png", 0, 0, d3dDevice, d3dContext, 523.f/40.f, 65.f/40.f,0);
+
+		piramidesMP = std::make_unique<BillboardRR>(L"mP1.png", 0, 0, d3dDevice, d3dContext, 925.f / 2.f, 500.f / 2.f);
+		piramidesMP2 = std::make_unique<BillboardRR>(L"mP2.png", 0, 0, d3dDevice, d3dContext, 925.f / 2.f, 500.f / 2.f);
+		arenaMP = std::make_unique<BillboardRR>(L"arena.png", 0, 0, d3dDevice, d3dContext, 925.f / 2.f, 500.f / 2.f);
+		oasis = std::make_unique<BillboardRR>(L"oasis.png", 0, 0, d3dDevice, d3dContext, 523.f / 40.f, 65.f / 40.f, 0);
 		palmera = std::make_unique<BillboardRR>(L"palm.png", 0, 0, d3dDevice, d3dContext, 5.f, 7.f);
-	
+
 		wPressed = false;
 		aPressed = false;
 		sPressed = false;
 		dPressed = false;
 
-		
+
 
 	}
 
 	~DXRR()
 	{
 		LiberaD3D();
-		
-		
-	
+
+
+
 		gestorDeLuz->release();
 	}
 
@@ -181,14 +185,14 @@ public:
 		//Las formas en como la pc puede ejecutar el DX11, la mas rapida es D3D_DRIVER_TYPE_HARDWARE pero solo se puede usar cuando lo soporte el hardware
 		//otra opcion es D3D_DRIVER_TYPE_WARP que emula el DX11 en los equipos que no lo soportan
 		//la opcion menos recomendada es D3D_DRIVER_TYPE_SOFTWARE, es la mas lenta y solo es util cuando se libera una version de DX que no sea soportada por hardware
-		D3D_DRIVER_TYPE driverTypes[]=
+		D3D_DRIVER_TYPE driverTypes[] =
 		{
 			D3D_DRIVER_TYPE_HARDWARE, D3D_DRIVER_TYPE_WARP, D3D_DRIVER_TYPE_SOFTWARE
 		};
 		unsigned int totalDriverTypes = ARRAYSIZE(driverTypes);
 
 		//La version de DX que utilizara, en este caso el DX11
-		D3D_FEATURE_LEVEL featureLevels[]=
+		D3D_FEATURE_LEVEL featureLevels[] =
 		{
 			D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_1, D3D_FEATURE_LEVEL_10_0
 		};
@@ -210,40 +214,40 @@ public:
 
 		HRESULT result;
 		unsigned int driver = 0, creationFlags = 0;
-		for(driver = 0; driver<totalDriverTypes; driver++)
+		for (driver = 0; driver < totalDriverTypes; driver++)
 		{
 			result = D3D11CreateDeviceAndSwapChain(0, driverTypes[driver], 0,
-				creationFlags, featureLevels, totalFeaturesLevels, 
+				creationFlags, featureLevels, totalFeaturesLevels,
 				D3D11_SDK_VERSION, &swapChainDesc, &swapChain,
 				&d3dDevice, &featureLevel, &d3dContext);
 
-			if(SUCCEEDED(result))
+			if (SUCCEEDED(result))
 			{
 				driverType = driverTypes[driver];
 				break;
 			}
 		}
 
-		if(FAILED(result))
+		if (FAILED(result))
 		{
 
 			//Error al crear el Direct3D device
 			return false;
 		}
-		
+
 		ID3D11Texture2D* backBufferTexture;
 		result = swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferTexture);
-		if(FAILED(result))
+		if (FAILED(result))
 		{
 			//"Error al crear el swapChainBuffer
 			return false;
 		}
 
 		result = d3dDevice->CreateRenderTargetView(backBufferTexture, 0, &backBufferTarget);
-		if(backBufferTexture)
+		if (backBufferTexture)
 			backBufferTexture->Release();
 
-		if(FAILED(result))
+		if (FAILED(result))
 		{
 			//Error al crear el renderTargetView
 			return false;
@@ -273,9 +277,9 @@ public:
 		depthTexDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 		depthTexDesc.CPUAccessFlags = 0;
 		depthTexDesc.MiscFlags = 0;
-		
+
 		result = d3dDevice->CreateTexture2D(&depthTexDesc, NULL, &depthTexture);
-		if(FAILED(result))
+		if (FAILED(result))
 		{
 			MessageBox(0, L"Error", L"Error al crear la DepthTexture", MB_OK);
 			return false;
@@ -288,7 +292,7 @@ public:
 		descDSV.Texture2D.MipSlice = 0;
 
 		result = d3dDevice->CreateDepthStencilView(depthTexture, &descDSV, &depthStencilView);
-		if(FAILED(result))
+		if (FAILED(result))
 		{
 			MessageBox(0, L"Error", L"Error al crear el depth stencil target view", MB_OK);
 			return false;
@@ -296,23 +300,23 @@ public:
 
 		d3dContext->OMSetRenderTargets(1, &backBufferTarget, depthStencilView);
 
-		return true;			
-		
+		return true;
+
 	}
 
 	void LiberaD3D(void)
 	{
-		if(depthTexture)
+		if (depthTexture)
 			depthTexture->Release();
-		if(depthStencilView)
+		if (depthStencilView)
 			depthStencilView->Release();
-		if(backBufferTarget)
+		if (backBufferTarget)
 			backBufferTarget->Release();
-		if(swapChain)
+		if (swapChain)
 			swapChain->Release();
-		if(d3dContext)
+		if (d3dContext)
 			d3dContext->Release();
-		if(d3dDevice)
+		if (d3dDevice)
 			d3dDevice->Release();
 
 		depthTexture = 0;
@@ -322,16 +326,17 @@ public:
 		swapChain = 0;
 		backBufferTarget = 0;
 	}
-	
+
 	void Render(void)
 	{
-		if( d3dContext == 0 )
+
+		if (d3dContext == 0)
 			return;
 
 		float clearColor[4] = { 0, 0, 0, 1.0f };
-		d3dContext->ClearRenderTargetView( backBufferTarget, clearColor );
-		d3dContext->ClearDepthStencilView( depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
-		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 15.f ;
+		d3dContext->ClearRenderTargetView(backBufferTarget, clearColor);
+		d3dContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+		camara->posCam.y = terreno->Superficie(camara->posCam.x, camara->posCam.z) + 15.f;
 		if (!gamePad) {
 			izqder = (mouseX - anchoF / 2) / (anchoF * 50);
 			arriaba = -(mouseY - altoF / 2) / (altoF * 50);
@@ -347,10 +352,16 @@ public:
 			camara->posCam += camara->refRight * 0.05f;
 		}
 		if (dPressed) {
-			camara->posCam +=camara->refRight * -0.05f;
+			camara->posCam += camara->refRight * -0.05f;
 		}
-		
-		
+
+
+		if (!musicaSonando) {
+
+			PlaySound(L"Gerudo.wav", 0, SND_LOOP | SND_ASYNC);
+			musicaSonando = true;
+		}
+
 
 		gestorDeLuz->Update(camara->getPosCam());
 		skydome->Update(camara->vista, camara->proyeccion, gestorDeLuz);
@@ -358,12 +369,12 @@ public:
 		TurnOffDepth();
 		skydome->Render(camara->posCam);
 		TurnOnDepth();
-		terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-	
-	//MATTE PAINTING	
-		
-	
-		int posX, posZ;
+	terreno->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+
+		//MATTE PAINTING	
+
+
+		float posX, posZ;
 
 
 		//colisiones limitrofes
@@ -373,23 +384,23 @@ public:
 		CollisionDetection(camara->getPosCam().z, 145.4f);
 
 
-		
+
 		//elefante
 		posX = camara->getPosCam().x; posZ = camara->getPosCam().z;
 		static float rott = 0.f;
 		rott += izqder;
-		D3DXMATRIX* aux, * aux1; 
+		D3DXMATRIX* aux, * aux1;
 		aux = D3DXMatrixRotationX(&elefante->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		aux1 = D3DXMatrixRotationY(&elefante->getMatrizMundo(), D3DXToRadian(16.f)+ rott);
+		aux1 = D3DXMatrixRotationY(&elefante->getMatrizMundo(), D3DXToRadian(16.f) + rott);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX + camara->refFront.x*4.f, 5.f, posZ  + camara->refFront.z * 4.f);
+		D3DXMatrixTranslation(aux1, posX+camara->refFront.x*4.f,camara->getPosCam().y-7.f, posZ+ camara->refFront.z * 4.f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		elefante->setMatrizMundo(*aux, terreno.get());
+		elefante->setMatrizMundo(*aux);
 		elefante->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-	
-		
+
+
 		////gato
 
 		posX = 25.56f; posZ = -36.67f;
@@ -429,7 +440,7 @@ public:
 
 		//// puerta
 
-		posX =  36.7f; posZ = -18.f;
+		posX = 36.7f; posZ = -18.f;
 
 		aux = D3DXMatrixRotationX(&puerta->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		aux1 = D3DXMatrixRotationY(&puerta->getMatrizMundo(), D3DXToRadian(90.f));
@@ -443,26 +454,26 @@ public:
 		puerta->setMatrizMundo(*aux, terreno.get());
 		puerta->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ-16.f, 20.f, 20.f);
-		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ+16.f, 20.f, 20.f);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ - 16.f, 20.f, 20.f);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ + 16.f, 20.f, 20.f);
 
 
 		//// obelisco
-		
+
 		posX = -162.24f; posZ = 45.58f;
-		
+
 		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		aux1= D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
-		D3DXMatrixMultiply(aux, aux, aux1);		
-		D3DXMatrixScaling(aux1, 1.6f,1.6f,1.6f);
+		aux1 = D3DXMatrixRotationY(&obelisco->getMatrizMundo(), D3DXToRadian(180.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1,posX,3.9511f, posZ);
+		D3DXMatrixScaling(aux1, 1.6f, 1.6f, 1.6f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-	
-		
+		D3DXMatrixTranslation(aux1, posX, 3.9511f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+
 		obelisco->setMatrizMundo(*aux, terreno.get());
 		obelisco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-	
+
 
 		posX = -162.24f; posZ = -49.47f;
 		aux = D3DXMatrixRotationX(&obelisco->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
@@ -470,7 +481,7 @@ public:
 		D3DXMatrixMultiply(aux, aux, aux1);
 		D3DXMatrixScaling(aux1, 1.6f, 1.6f, 1.6f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX, 0.f , posZ);
+		D3DXMatrixTranslation(aux1, posX, 0.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		obelisco->setMatrizMundo(*aux, terreno.get());
 		obelisco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
@@ -478,33 +489,33 @@ public:
 
 		//esfinge
 		posX = 102.38f; posZ = 154.22f;
-
+		static float xx = 0;
 		aux = D3DXMatrixRotationX(&esfinge->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		aux1 = D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(180.f));
+		aux1 = D3DXMatrixRotationY(&esfinge->getMatrizMundo(), D3DXToRadian(90.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixScaling(aux1, 1.2f, 1.2f, 1.2f);
+		D3DXMatrixScaling(aux1, 2.5f, 2.5f, 2.5f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX, -6.f, posZ);
+		D3DXMatrixTranslation(aux1, posX, -10.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 
 
 		esfinge->setMatrizMundo(*aux, terreno.get());
 		esfinge->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, 45.f, 160.f);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, 45.f, 90.f);
 
 		////casa
 		posX = -74.37f; posZ = -154.72f;
 		aux = D3DXMatrixRotationX(&box->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		aux1 = D3DXMatrixRotationY(&box->getMatrizMundo(), D3DXToRadian(90.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixScaling(aux1, 5.f, 5.f, 5.f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) -10.3f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 7.3f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		box->setMatrizMundo(*aux, terreno.get());
 		box->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
-		
+
 		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, 18.f, 18.f);
 
 
@@ -512,9 +523,9 @@ public:
 		aux = D3DXMatrixRotationX(&box->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		aux1 = D3DXMatrixRotationY(&box->getMatrizMundo(), D3DXToRadian(90.f));
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixScaling(aux1, 5.f, 5.f, 5.f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.3f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 7.3f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		box->setMatrizMundo(*aux, terreno.get());
 		box->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
@@ -528,12 +539,12 @@ public:
 		D3DXMatrixMultiply(aux, aux, aux1);
 		D3DXMatrixScaling(aux1, 2.f, 2.f, 2.f);
 		D3DXMatrixMultiply(aux, aux, aux1);
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 10.3f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 12.3f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		box1->setMatrizMundo(*aux, terreno.get());
 		box1->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, 18.f, 18.f);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, 18.f, 20.f);
 
 
 		////arbol
@@ -542,64 +553,109 @@ public:
 
 		posX = 174.34f; posZ = 10.75f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ)-18.f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 18.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-		
+
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		CollisionDetection(camara->getPosCam().x+ camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 
-		posX =81.22f; posZ = 2.8f;
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 18.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
+
+		posX = 81.22f; posZ = 2.8f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 14.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
-		CollisionDetection(camara->getPosCam().x+ camara->refFront.x * 8.f, camara->getPosCam().z+ camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 18.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
+		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 
 		posX = -70.36f; posZ = -118.96f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 17.f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 19.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 21.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 
 		posX = -85.52f; posZ = 96.75f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 11.f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 9.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 16.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
-			
+
 
 		posX = 28.81f; posZ = 49.93f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
 		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 14.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 18.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 
 
-		posX = 14.8f; posZ =-189.81f;
+		posX = 14.8f; posZ = -189.81f;
 		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
-		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 14.f, posZ);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 12.f, posZ);
 		D3DXMatrixMultiply(aux, aux, aux1);
 		arbol->setMatrizMundo(*aux, terreno.get());
-
 		arbol->Draw(camara->vista, camara->proyeccion, gestorDeLuz);
 
+		aux = D3DXMatrixRotationX(&arbol->getMatrizMundo(), D3DXToRadian(ESFINGEROTX));
+		D3DXMatrixScaling(aux1, 3.f, 3.f, 3.f);
+		D3DXMatrixMultiply(aux, aux, aux1);
+		D3DXMatrixTranslation(aux1, posX, terreno->Superficie(posX, posZ) - 16.f, posZ);
+		D3DXMatrixMultiply(aux, aux, aux1);
+
+		tronco->setMatrizMundo(*aux, terreno.get());
+		tronco->Draw(camara->vista, camara->proyeccion, gestorDeLuz); 
 		CollisionDetection(camara->getPosCam().x + camara->refFront.x * 8.f, camara->getPosCam().z + camara->refFront.z * 8.f, posX, posZ, ANCHOARBOL, ANCHOARBOL);
 		////monstera
 
@@ -1003,6 +1059,33 @@ public:
 
 		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 242.47f * 1.7f, -10.f, -10.f, gestorDeLuz,0);
 		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 222.47f * 2.8f, -10.f, -20.f, gestorDeLuz,0);
+
+
+
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 237.f * 1.5f, -10.f, 0.f, gestorDeLuz, 0);
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 237.f * 2.f, -10.f, 20.f, gestorDeLuz, 0);
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 237.f * 1.8f, -10.f, 100.f, gestorDeLuz, 0);
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 337.f * 1.0f, -10.f, -100.f, gestorDeLuz, 0);
+
+
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, 100, -10.f, 237.97f*2.f, gestorDeLuz, 0);
+	
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, -100, -10.f, 297.97f*1.8f, gestorDeLuz, 0);
+
+
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, -100, -10.f, 307.97f * 2.5f, gestorDeLuz, 0);
+	
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, -110, -10.f, 307.97f * 3.1f, gestorDeLuz, 0);
+	
+
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, -250, -15.f, 307.97f * 2.3f, gestorDeLuz, 0);
+		palmera->Draw(camara->vista, camara->proyeccion, camara->posCam, -160, -1.f, 247.97f * 2.9f, gestorDeLuz, 0);
+
+
+	
+
+
+		
 		swapChain->Present( 1, 0 );
 	}
 
